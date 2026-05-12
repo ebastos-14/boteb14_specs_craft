@@ -1,0 +1,2206 @@
+{
+  "albionSpecs": {
+    "grid": [
+      {
+        "image": "https://render.albiononline.com/v1/item/T7_HEAD_PLATE_SET1",
+        "name": "Cascos",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_SET1",
+            "name": "Soldado",
+            "spec": 4,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_SET2",
+            "name": "Caballero",
+            "spec": 14,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_SET3",
+            "name": "Guardian",
+            "spec": 46,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_UNDEAD",
+            "name": "Guardatumbas",
+            "spec": 5,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_HELL",
+            "name": "Demonio",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_KEEPER",
+            "name": "Juez",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_AVALON",
+            "name": "Valor",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_FEY",
+            "name": "Crepuscular",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T7_ARMOR_PLATE_SET1.png?quality=2",
+        "name": "Armaduras",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_SET1",
+            "name": "Soldado",
+            "spec": 12,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_SET2",
+            "name": "Caballero",
+            "spec": 13,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_SET3",
+            "name": "Guardian",
+            "spec": 41,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_UNDEAD",
+            "name": "Guardatumbas",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_HELL",
+            "name": "Demonio",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_KEEPER",
+            "name": "Juez",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_AVALON",
+            "name": "Valor",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_FEY",
+            "name": "Crepuscular",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T7_SHOES_PLATE_SET1",
+        "name": "Botas",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_SET1",
+            "name": "Soldado",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_SET2",
+            "name": "Caballero",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_SET3",
+            "name": "Guardian",
+            "spec": 42,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_UNDEAD",
+            "name": "Guardatumbas",
+            "spec": 18,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_HELL",
+            "name": "Demonio",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_KEEPER",
+            "name": "Juez",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_AVALON",
+            "name": "Valor",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_FEY",
+            "name": "Crepuscular",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T7_MAIN_SWORD",
+        "name": "Espadas",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_MAIN_SWORD",
+            "name": "Ancha",
+            "spec": 22,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_CLAYMORE",
+            "name": "Claymore",
+            "spec": 4,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_DUALSWORD",
+            "name": "Dobles",
+            "spec": 8,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_MAIN_SCIMITAR_MORGANA",
+            "name": "Hoja Clarent",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_CLEAVER_HELL",
+            "name": "Tallada",
+            "spec": 30,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_DUALSCIMITAR_UNDEAD",
+            "name": "Galatinas",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_CLAYMORE_AVALON",
+            "name": "Crea Reyes",
+            "spec": 7,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_MAIN_SWORD_CRYSTAL",
+            "name": "Hoja Infinita",
+            "spec": 20,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T8_MAIN_AXE.png?quality=2",
+        "name": "Hachas",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_MAIN_AXE",
+            "name": "Guerra",
+            "spec": 50,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_AXE",
+            "name": "Gran Hacha",
+            "spec": 58,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_HALBERD",
+            "name": "Alabarda",
+            "spec": 45,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_HALBERD_MORGANA",
+            "name": "Llamacarroña",
+            "spec": 28,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_SCYTHE_HELL",
+            "name": "Guadaña De Almas",
+            "spec": 17,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_DUALAXE_KEEPER",
+            "name": "Patas De Oso",
+            "spec": 45,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_AXE_AVALON",
+            "name": "Rompereinos",
+            "spec": 34,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_SCYTHE_CRYSTAL.png?quality=5",
+            "name": "Falce De Cristal",
+            "spec": 100,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T7_MAIN_MACE",
+        "name": "Mazas",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_MAIN_MACE",
+            "name": "Maza",
+            "spec": 42,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_MACE",
+            "name": "Pesada",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_FLAIL",
+            "name": "Mangual",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_MAIN_ROCKMACE_KEEPER",
+            "name": "Lecho De Roca",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_MAIN_MACE_HELL",
+            "name": "Incubo",
+            "spec": 11,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_MACE_MORGANA",
+            "name": "Camlann",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_DUALMACE_AVALON",
+            "name": "Juradores",
+            "spec": 3,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_MAIN_MACE_CRYSTAL",
+            "name": "Monarca De La Tormenta",
+            "spec": 6,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T7_MAIN_HAMMER",
+        "name": "Martillos",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_MAIN_HAMMER",
+            "name": "Martillo",
+            "spec": 66,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_POLEHAMMER",
+            "name": "Largo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_HAMMER",
+            "name": "Gran Martillo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_HAMMER_UNDEAD",
+            "name": "De La Tumba",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_DUALHAMMER_HELL",
+            "name": "De La Forja",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_RAM_KEEPER",
+            "name": "Guardabosques",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_HAMMER_AVALON",
+            "name": "Mano De La Justicia",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_HAMMER_CRYSTAL",
+            "name": "Relampago",
+            "spec": 31,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T7_2H_KNUCKLES_SET1",
+        "name": "Guantes",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_KNUCKLES_SET1",
+            "name": "De Peleador",
+            "spec": 25,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_KNUCKLES_SET2",
+            "name": "Brazales De Batalla",
+            "spec": 32,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_KNUCKLES_SET3",
+            "name": "Puas",
+            "spec": 27,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_KNUCKLES_KEEPER",
+            "name": "Zarpas Ozunas",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_KNUCKLES_HELL",
+            "name": "Manos Infernales",
+            "spec": 50,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_KNUCKLES_MORGANA",
+            "name": "Cestus Corvidos",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_KNUCKLES_AVALON",
+            "name": "Puños De Avalon",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_KNUCKLES_CRYSTAL",
+            "name": "Brazales De La Fuerza Pulzante",
+            "spec": 4,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T7_2H_CROSSBOW",
+        "name": "Ballestas",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_CROSSBOW",
+            "name": "Ballesta",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_CROSSBOWLARGE",
+            "name": "Pesada",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_MAIN_1HCROSSBOW",
+            "name": "Ligera",
+            "spec": 40,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_REPEATINGCROSSBOW_UNDEAD",
+            "name": "Repetidora",
+            "spec": 20,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_DUALCROSSBOW_HELL",
+            "name": "Lanzasaetas",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_CROSSBOWLARGE_MORGANA",
+            "name": "Arco De Asedio",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_CROSSBOW_CANNON_AVALON",
+            "name": "Modelador De Energia",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_2H_DUALCROSSBOW_CRYSTAL",
+            "name": "Desintegradoras De Luz",
+            "spec": 4,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T7_OFF_SHIELD",
+        "name": "Escudos",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_OFF_SHIELD",
+            "name": "Escudo",
+            "spec": 54,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_OFF_TOWERSHIELD_UNDEAD",
+            "name": "Sarcofago",
+            "spec": 3,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_OFF_SHIELD_HELL",
+            "name": "Villano",
+            "spec": 3,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_OFF_SPIKEDSHIELD_MORGANA",
+            "name": "Partecaras",
+            "spec": 2,
+            "visible": true
+          },
+          {
+            "image": "",
+            "name": "",
+            "spec": 0,
+            "visible": false
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_OFF_SHIELD_AVALON",
+            "name": "Aegis",
+            "spec": 10,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_OFF_SHIELD_CRYSTAL",
+            "name": "Barreras Inquebrantables",
+            "spec": 4,
+            "visible": true
+          },
+          {
+            "image": "",
+            "name": "",
+            "spec": 0,
+            "visible": false
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_SET1",
+        "name": "Mercenario",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_SET1",
+            "name": "Mercenario",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_SET2",
+            "name": "Cazador",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_SET3",
+            "name": "Asesino",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_MORGANA",
+            "name": "Acechador",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_HELL",
+            "name": "Vandalo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_UNDEAD",
+            "name": "Espectro",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_AVALON",
+            "name": "Tenacidad",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_FEY",
+            "name": "Caminanieblas",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_SET1",
+        "name": "Chaquetas",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_SET1",
+            "name": "Mercenario",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_SET2",
+            "name": "Cazador",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_SET3",
+            "name": "Asesino",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_MORGANA",
+            "name": "Acechador",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_HELL",
+            "name": "Vandalo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_UNDEAD",
+            "name": "Espectro",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_AVALON",
+            "name": "Tenacidad",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_FEY",
+            "name": "Caminanieblas",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_SET1",
+        "name": "Zapatos",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_SET1",
+            "name": "Mercenario",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_SET2",
+            "name": "Cazador",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_SET3",
+            "name": "Asesino",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_MORGANA",
+            "name": "Acechador",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_HELL",
+            "name": "Vandalo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_UNDEAD",
+            "name": "Espectro",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_AVALON",
+            "name": "Tenacidad",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_FEY",
+            "name": "Caminanieblas",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 14",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 15",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 16",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 17",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 18",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 19",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T7_OFF_TORCH",
+        "name": "Antorchas",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_OFF_TORCH",
+            "name": "Antorcha",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_OFF_HORN_KEEPER",
+            "name": "Invocanieblas",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_OFF_JESTERCANE_HELL",
+            "name": "Baston Malicioso",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_OFF_LAMP_UNDEAD",
+            "name": "Vela De Cripta",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "",
+            "name": "",
+            "spec": 0,
+            "visible": false
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_OFF_TALISMAN_AVALON",
+            "name": "Cetro Sagrado",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_OFF_TORCH_CRYSTAL",
+            "name": "Antorcha Llamazul",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "",
+            "name": "",
+            "spec": 0,
+            "visible": false
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_SET1",
+        "name": "Habitos",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_SET1",
+            "name": "Erudito",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_SET2",
+            "name": "Clerigo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_SET3",
+            "name": "Mago",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_KEEPER",
+            "name": "Druida",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_HELL",
+            "name": "Diablo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_MORGANA",
+            "name": "Sectario",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_AVALON",
+            "name": "Pureza",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_FEY",
+            "name": "Escamas Feericas",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_SET1",
+        "name": "Tunicas",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_SET1",
+            "name": "Erudito",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_SET2",
+            "name": "Clerigo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_SET3",
+            "name": "Mago",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_KEEPER",
+            "name": "Druida",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_HELL",
+            "name": "Diablo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_MORGANA",
+            "name": "Sectario",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_AVALON",
+            "name": "Pureza",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_FEY",
+            "name": "Escamas Feericas",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_SET1",
+        "name": "Sandalias",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_SET1",
+            "name": "Erudito",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_SET2",
+            "name": "Clerigo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_SET3",
+            "name": "Mago",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_KEEPER",
+            "name": "Druida",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_HELL",
+            "name": "Diablo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_MORGANA",
+            "name": "Sectario",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_AVALON",
+            "name": "Pureza",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_FEY",
+            "name": "Escamas Feericas",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 24",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 25",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 26",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 27",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 28",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 29",
+        "visible": false,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T7_OFF_BOOK",
+        "name": "Libros",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_OFF_BOOK",
+            "name": "Libro De Rosalia",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_OFF_ORB_MORGANA",
+            "name": "Ojo De Los Secretos",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_OFF_DEMONSKULL_HELL",
+            "name": "Muisak",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_OFF_TOTEM_KEEPER",
+            "name": "Raíz Primaria",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "",
+            "name": "",
+            "spec": 0,
+            "visible": false
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_OFF_CENSER_AVALON",
+            "name": "Incensario Celestial",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_OFF_TOME_CRYSTAL",
+            "name": "Grimorio Cronoestatico",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "",
+            "name": "",
+            "spec": 0,
+            "visible": false
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 31",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 32",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 33",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 34",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 35",
+        "visible": false,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 36",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 37",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 38",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 39",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+        "name": "Categoria 40",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 1",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 2",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 3",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 4",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 5",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 6",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 7",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
+            "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      }
+    ]
+  }
+}
