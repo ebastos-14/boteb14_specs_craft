@@ -238,6 +238,103 @@ button:hover{
     margin-bottom:20px;
 }
 
+/* ================= MOBILE ================= */
+
+@media (max-width: 900px) and (orientation: portrait){
+
+    body{
+        padding:12px;
+    }
+
+    .grid{
+
+        grid-template-columns:repeat(4,1fr);
+
+        gap:10px;
+    }
+
+    .categoryName{
+        font-size:15px;
+    }
+
+    .categoryTotal{
+        font-size:12px;
+    }
+
+    .modal{
+        align-items:flex-start;
+        overflow:auto;
+        padding:20px 0;
+    }
+
+    .modalBox{
+
+        width:95%;
+
+        padding:16px;
+    }
+
+    .specLayout{
+
+        grid-template-columns:1fr;
+
+        gap:20px;
+    }
+
+    .totalCard{
+
+        width:100%;
+    }
+
+    .totalCard img{
+
+        height:220px;
+    }
+
+    .weaponGrid{
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:12px;
+    }
+
+    .weapon img{
+
+        height:140px;
+    }
+
+    .weaponInfo div:first-child{
+
+        font-size:16px;
+    }
+
+    .editModal{
+
+        overflow:auto;
+        padding:20px 0;
+    }
+
+    .editBox{
+
+        width:95%;
+    }
+
+    .editPreview{
+
+        height:220px;
+    }
+
+    .topbar{
+
+        flex-direction:column;
+    }
+
+    button{
+
+        width:100%;
+    }
+}
+
 </style>
 </head>
 <body>
