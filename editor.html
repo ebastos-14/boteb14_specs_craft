@@ -3,360 +3,576 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Albion Craft Specs</title>
-
-<!--
-=====================================================
-PROYECTO:
-- editor.html  -> Página para editar specs
-- index.html   -> Página pública reflejo en tiempo real
-- Firebase Firestore -> Guardado online en tiempo real
-=====================================================
-
-INSTRUCCIONES:
-
-1. Crear proyecto en Firebase:
-   https://firebase.google.com/
-
-2. Activar Firestore Database
-
-3. Reemplazar FIREBASE_CONFIG con tus datos.
-
-4. Crear 2 archivos:
-   - editor.html
-   - index.html
-
-5. Copiar el código correspondiente.
-=====================================================
--->
-
-</head>
-<body>
-
-<!-- ===================================================== -->
-<!-- ==================== editor.html ==================== -->
-<!-- ===================================================== -->
-
-<!--
-GUARDAR COMO: editor.html
--->
-
-<script type="module">
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-import {
-  getFirestore,
-  doc,
-  setDoc,
-  onSnapshot
-} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "FIREBASE_CONFIG",
-  authDomain: "FIREBASE_CONFIG",
-  projectId: "FIREBASE_CONFIG",
-  storageBucket: "FIREBASE_CONFIG",
-  messagingSenderId: "FIREBASE_CONFIG",
-  appId: "FIREBASE_CONFIG"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const ref = doc(db, "albion", "specs");
-
-let data = {
-  Guerrero: {},
-  Cazador: {},
-  Mago: {}
-};
-
-onSnapshot(ref, (snap) => {
-  if (snap.exists()) {
-    data = snap.data();
-    render();
-  }
-});
-
-window.addSpec = async function(){
-
-  const clase = document.getElementById('clase').value;
-  const categoria = document.getElementById('categoria').value;
-  const nombre = document.getElementById('nombre').value;
-
-  if(!clase || !categoria || !nombre) return;
-
-  if(!data[clase]) data[clase] = {};
-  if(!data[clase][categoria]) data[clase][categoria] = [];
-
-  data[clase][categoria].push({
-    nombre,
-    spec: 0
-  });
-
-  await setDoc(ref, data);
-
-  document.getElementById('nombre').value = '';
-}
-
-window.updateSpec = async function(clase,categoria,index,valor){
-
-  data[clase][categoria][index].spec = parseInt(valor);
-
-  await setDoc(ref, data);
-}
-
-window.deleteSpec = async function(clase,categoria,index){
-
-  data[clase][categoria].splice(index,1);
-
-  await setDoc(ref, data);
-}
-
-function render(){
-
-  const container = document.getElementById('list');
-  container.innerHTML = '';
-
-  for(const clase in data){
-
-    const classDiv = document.createElement('div');
-    classDiv.className = 'classBox';
-
-    classDiv.innerHTML = `<h2>${clase}</h2>`;
-
-    for(const categoria in data[clase]){
-
-      const catDiv = document.createElement('div');
-      catDiv.className = 'catBox';
-
-      catDiv.innerHTML = `<h3>${categoria}</h3>`;
-
-      data[clase][categoria].forEach((item,index)=>{
-
-        const row = document.createElement('div');
-        row.className = 'row';
-
-        row.innerHTML = `
-          <span>${item.nombre}</span>
-
-          <input
-            type="number"
-            min="0"
-            max="100"
-            value="${item.spec}"
-            onchange="updateSpec('${clase}','${categoria}',${index},this.value)"
-          >
-
-          <button onclick="deleteSpec('${clase}','${categoria}',${index})">
-            Eliminar
-          </button>
-        `;
-
-        catDiv.appendChild(row);
-      });
-
-      classDiv.appendChild(catDiv);
-    }
-
-    container.appendChild(classDiv);
-  }
-}
-
-</script>
+<title>Albion Editor</title>
 
 <style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
-  background:#101218;
-  color:white;
-  font-family:Arial;
-  padding:20px;
+    background:#0f1115;
+    color:white;
+    font-family:Arial;
+    padding:20px;
 }
 
-.panel{
-  background:#1b1f2a;
-  padding:20px;
-  border-radius:12px;
-  margin-bottom:20px;
+h1{
+    margin-bottom:20px;
 }
 
-input,select{
-  width:100%;
-  margin:5px 0;
-  padding:10px;
-  border:none;
-  border-radius:8px;
-  background:#2a3040;
-  color:white;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:12px;
+}
+
+.category{
+    background:#1b1f2a;
+    border-radius:14px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.2s;
+    border:2px solid transparent;
+}
+
+.category:hover{
+    border-color:#4b7cff;
+}
+
+.category.hidden{
+    opacity:.08;
+}
+
+.category img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    background:#222;
+}
+
+.categoryInfo{
+    padding:8px;
+    text-align:center;
+}
+
+.categoryName{
+    font-size:12px;
+    margin-bottom:5px;
+}
+
+.categoryTotal{
+    font-size:18px;
+    font-weight:bold;
+}
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.8);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modalBox{
+    width:1400px;
+    max-width:95%;
+    background:#161b25;
+    border-radius:20px;
+    padding:20px;
+}
+
+.specHeader{
+    display:grid;
+    grid-template-columns:250px 1fr;
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.totalCard{
+    background:#232938;
+    border-radius:16px;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.totalCard img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    background:#333;
+}
+
+.totalInfo{
+    padding:12px;
+    text-align:center;
+}
+
+.totalValue{
+    font-size:28px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.specGrid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.weapon{
+    background:#232938;
+    border-radius:16px;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.weapon img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    background:#333;
+}
+
+.weaponInfo{
+    padding:10px;
+    text-align:center;
+}
+
+.weaponSpec{
+    margin-top:8px;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.editModal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.85);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:2000;
+}
+
+.editModal.active{
+    display:flex;
+}
+
+.editBox{
+    width:600px;
+    background:#161b25;
+    border-radius:20px;
+    padding:20px;
+}
+
+.editPreview{
+    width:100%;
+    height:250px;
+    background:#222;
+    border-radius:16px;
+    object-fit:cover;
+    margin-bottom:20px;
+}
+
+.editBox input{
+    width:100%;
+    margin-bottom:15px;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#232938;
+    color:white;
+}
+
+.topbar{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
 }
 
 button{
-  padding:10px 15px;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
+    border:none;
+    background:#4b7cff;
+    color:white;
+    padding:12px 16px;
+    border-radius:10px;
+    cursor:pointer;
 }
 
-.row{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  margin:10px 0;
+.closeBtn{
+    background:#ff4d4d;
 }
 
-.row span{
-  width:250px;
-}
-
-.row input{
-  width:80px;
-}
-
-.classBox{
-  margin-bottom:30px;
-}
-
-.catBox{
-  background:#1b1f2a;
-  padding:15px;
-  border-radius:12px;
-  margin-bottom:15px;
-}
 </style>
+</head>
+<body>
 
-<div class="panel">
+<h1>Albion Specs Editor</h1>
 
-  <h1>Editor Albion Specs</h1>
+<div class="topbar">
+    <button onclick="saveData()">Guardar</button>
+</div>
 
-  <select id="clase">
-    <option value="Guerrero">Guerrero</option>
-    <option value="Cazador">Cazador</option>
-    <option value="Mago">Mago</option>
-  </select>
+<div class="grid" id="grid"></div>
 
-  <input id="categoria" placeholder="Hachas, Espadas, Bastones...">
+<!-- MODAL SPECS -->
 
-  <input id="nombre" placeholder="Nombre del arma o pieza">
+<div class="modal" id="specModal">
 
-  <button onclick="addSpec()">
-    Agregar
-  </button>
+    <div class="modalBox">
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+            <h2 id="modalTitle">Categoria</h2>
+
+            <button class="closeBtn" onclick="closeSpecs()">
+                Cerrar
+            </button>
+        </div>
+
+        <div class="specHeader">
+
+            <div class="totalCard" onclick="openEditTotal()">
+
+                <img id="totalImage">
+
+                <div class="totalInfo">
+
+                    <div id="totalName"></div>
+
+                    <div class="totalValue" id="totalValue">
+                        0 / 800
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="specGrid" id="specGrid"></div>
+
+        </div>
+
+    </div>
 
 </div>
 
-<div id="list"></div>
+<!-- EDIT MODAL -->
 
+<div class="editModal" id="editModal">
 
+    <div class="editBox">
 
-<!-- ===================================================== -->
-<!-- ==================== index.html ===================== -->
-<!-- ===================================================== -->
+        <img id="editPreview" class="editPreview">
 
-<!--
-GUARDAR COMO: index.html
--->
+        <input id="editImage" placeholder="URL Imagen">
+
+        <input id="editName" placeholder="Nombre">
+
+        <input id="editSpec" type="number" min="0" max="100" placeholder="Spec">
+
+        <div style="display:flex;gap:10px;">
+            <button onclick="saveEdit()">
+                Guardar
+            </button>
+
+            <button class="closeBtn" onclick="closeEdit()">
+                Cancelar
+            </button>
+        </div>
+
+    </div>
+
+</div>
 
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+
 import {
-  getFirestore,
-  doc,
-  onSnapshot
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc
 } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "FIREBASE_CONFIG",
-  authDomain: "FIREBASE_CONFIG",
-  projectId: "FIREBASE_CONFIG",
-  storageBucket: "FIREBASE_CONFIG",
-  messagingSenderId: "FIREBASE_CONFIG",
-  appId: "FIREBASE_CONFIG"
+
+    apiKey: "TU_API_KEY",
+    authDomain: "TU_PROJECT.firebaseapp.com",
+    projectId: "TU_PROJECT",
+    storageBucket: "TU_PROJECT.appspot.com",
+    messagingSenderId: "123456",
+    appId: "APP_ID"
+
 };
 
 const app = initializeApp(firebaseConfig);
+
 const db = getFirestore(app);
-const ref = doc(db, "albion", "specs");
 
-onSnapshot(ref, (snap)=>{
+const ref = doc(db,"albion","specs");
 
-  if(!snap.exists()) return;
+let data = [];
 
-  render(snap.data());
-});
+let currentCategory = 0;
 
-function render(data){
+let currentWeapon = null;
 
-  const container = document.getElementById('viewer');
-  container.innerHTML = '';
+let editingTotal = false;
 
-  for(const clase in data){
+async function init(){
 
-    const classDiv = document.createElement('div');
-    classDiv.className = 'classBox';
+    const snap = await getDoc(ref);
 
-    classDiv.innerHTML = `<h2>${clase}</h2>`;
+    if(snap.exists()){
 
-    for(const categoria in data[clase]){
+        data = snap.data().grid;
 
-      const catDiv = document.createElement('div');
-      catDiv.className = 'catBox';
+    }else{
 
-      catDiv.innerHTML = `<h3>${categoria}</h3>`;
+        createDefault();
 
-      data[clase][categoria].forEach((item)=>{
-
-        const row = document.createElement('div');
-        row.className = 'row';
-
-        row.innerHTML = `
-          <span>${item.nombre}</span>
-          <b>${item.spec}/100</b>
-        `;
-
-        catDiv.appendChild(row);
-      });
-
-      classDiv.appendChild(catDiv);
+        await saveData();
     }
 
-    container.appendChild(classDiv);
-  }
+    renderGrid();
 }
+
+function createDefault(){
+
+    data = [];
+
+    for(let i=0;i<48;i++){
+
+        const weapons = [];
+
+        for(let x=0;x<8;x++){
+
+            weapons.push({
+
+                image:"",
+                name:"",
+                spec:0
+
+            });
+        }
+
+        data.push({
+
+            visible:true,
+            image:"",
+            name:`Categoria ${i+1}`,
+            weapons
+
+        });
+    }
+}
+
+window.saveData = async function(){
+
+    await setDoc(ref,{
+        grid:data
+    });
+
+    alert("Guardado");
+}
+
+function total(category){
+
+    return category.weapons.reduce((a,b)=>a+b.spec,0);
+}
+
+function renderGrid(){
+
+    const grid = document.getElementById('grid');
+
+    grid.innerHTML = '';
+
+    data.forEach((cat,index)=>{
+
+        const div = document.createElement('div');
+
+        div.className = 'category';
+
+        if(!cat.visible){
+
+            div.classList.add('hidden');
+        }
+
+        div.innerHTML = `
+
+            <img src="${cat.image || ''}">
+
+            <div class="categoryInfo">
+
+                <div class="categoryName">
+                    ${cat.name}
+                </div>
+
+                <div class="categoryTotal">
+                    ${total(cat)} / 800
+                </div>
+
+            </div>
+        `;
+
+        div.onclick = ()=>openSpecs(index);
+
+        grid.appendChild(div);
+    });
+}
+
+function openSpecs(index){
+
+    currentCategory = index;
+
+    const category = data[index];
+
+    document.getElementById('specModal').classList.add('active');
+
+    document.getElementById('modalTitle').innerText = category.name;
+
+    document.getElementById('totalImage').src = category.image || '';
+
+    document.getElementById('totalName').innerText = category.name;
+
+    document.getElementById('totalValue').innerText = total(category) + ' / 800';
+
+    renderWeapons();
+}
+
+function renderWeapons(){
+
+    const grid = document.getElementById('specGrid');
+
+    grid.innerHTML = '';
+
+    const category = data[currentCategory];
+
+    category.weapons.forEach((weapon,index)=>{
+
+        const div = document.createElement('div');
+
+        div.className = 'weapon';
+
+        div.innerHTML = `
+
+            <img src="${weapon.image || ''}">
+
+            <div class="weaponInfo">
+
+                <div>
+                    ${weapon.name}
+                </div>
+
+                <div class="weaponSpec">
+                    ${weapon.spec}
+                </div>
+
+            </div>
+        `;
+
+        div.onclick = ()=>openWeapon(index);
+
+        grid.appendChild(div);
+    });
+}
+
+window.closeSpecs = function(){
+
+    document.getElementById('specModal').classList.remove('active');
+}
+
+window.openEditTotal = function(){
+
+    editingTotal = true;
+
+    const category = data[currentCategory];
+
+    document.getElementById('editModal').classList.add('active');
+
+    document.getElementById('editPreview').src = category.image || '';
+
+    document.getElementById('editImage').value = category.image;
+
+    document.getElementById('editName').value = category.name;
+
+    document.getElementById('editSpec').style.display = 'none';
+}
+
+function openWeapon(index){
+
+    editingTotal = false;
+
+    currentWeapon = index;
+
+    const weapon = data[currentCategory].weapons[index];
+
+    document.getElementById('editModal').classList.add('active');
+
+    document.getElementById('editPreview').src = weapon.image || '';
+
+    document.getElementById('editImage').value = weapon.image;
+
+    document.getElementById('editName').value = weapon.name;
+
+    document.getElementById('editSpec').value = weapon.spec;
+
+    document.getElementById('editSpec').style.display = 'block';
+}
+
+window.closeEdit = function(){
+
+    document.getElementById('editModal').classList.remove('active');
+}
+
+document.getElementById('editImage').oninput = (e)=>{
+
+    document.getElementById('editPreview').src = e.target.value;
+}
+
+window.saveEdit = function(){
+
+    const image = document.getElementById('editImage').value;
+
+    const name = document.getElementById('editName').value;
+
+    if(editingTotal){
+
+        data[currentCategory].image = image;
+
+        data[currentCategory].name = name;
+
+    }else{
+
+        const spec = parseInt(document.getElementById('editSpec').value) || 0;
+
+        data[currentCategory].weapons[currentWeapon].image = image;
+
+        data[currentCategory].weapons[currentWeapon].name = name;
+
+        data[currentCategory].weapons[currentWeapon].spec = spec;
+    }
+
+    renderGrid();
+
+    openSpecs(currentCategory);
+
+    closeEdit();
+}
+
+init();
 
 </script>
-
-<style>
-body{
-  background:#0f1115;
-  color:white;
-  font-family:Arial;
-  padding:20px;
-}
-
-.classBox{
-  margin-bottom:30px;
-}
-
-.catBox{
-  background:#1a1d25;
-  border-radius:12px;
-  padding:15px;
-  margin-bottom:15px;
-}
-
-.row{
-  display:flex;
-  justify-content:space-between;
-  margin:8px 0;
-  padding:10px;
-  background:#232938;
-  border-radius:8px;
-}
-</style>
-
-<h1>Albion Crafter Specs</h1>
-
-<div id="viewer"></div>
 
 </body>
 </html>
