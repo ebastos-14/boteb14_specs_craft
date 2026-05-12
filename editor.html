@@ -245,20 +245,28 @@ button:hover{
 <h1>Albion Specs Editor</h1>
 
 <div class="userBox" id="userBox">
-    No logueado
+    No conectado
 </div>
 
 <div class="topbar">
 
-    <button onclick="loginGoogle()">
+    <button id="loginBtn" onclick="loginGoogle()">
         Login Google
     </button>
 
-    <button onclick="logoutGoogle()">
+    <button
+        id="logoutBtn"
+        onclick="logoutGoogle()"
+        style="display:none;"
+    >
         Logout
     </button>
 
-    <button id="saveBtn" onclick="forceSave()">
+    <button
+        id="saveBtn"
+        onclick="forceSave()"
+        style="display:none;"
+    >
         Guardar JSON
     </button>
 
@@ -360,8 +368,6 @@ button:hover{
 
 <script type="module">
 
-/* ================= FIREBASE ================= */
-
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
 
@@ -382,19 +388,17 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-/* ================= CONFIG ================= */
+/* ================= FIREBASE CONFIG ================= */
 
-const firebaseConfig = {
-    apiKey: "AIzaSyBtjzpQfDrtTLqcTDXoJ2zbU5m0zJgL3gg",
-    authDomain: "boteb14-specs.firebaseapp.com",
-    databaseURL: "https://boteb14-specs-default-rtdb.firebaseio.com",
-    projectId: "boteb14-specs",
-    storageBucket: "boteb14-specs.firebasestorage.app",
-    messagingSenderId: "367869082958",
-    appId: "1:367869082958:web:13f602b79ddfa54fb9321f",
-    measurementId: "G-8BLE0PQ2MX"
-  };
-
+const firebaseConfig = { 
+    apiKey: "AIzaSyBtjzpQfDrtTLqcTDXoJ2zbU5m0zJgL3gg", 
+    authDomain: "boteb14-specs.firebaseapp.com", 
+    databaseURL: "https://boteb14-specs-default-rtdb.firebaseio.com", 
+    projectId: "boteb14-specs", 
+    storageBucket: "boteb14-specs.firebasestorage.app", 
+    messagingSenderId: "367869082958", 
+    appId: "1:367869082958:web:13f602b79ddfa54fb9321f", 
+    measurementId: "G-8BLE0PQ2MX" };
 /* ================= INIT ================= */
 
 const app = initializeApp(firebaseConfig);
@@ -425,27 +429,19 @@ window.loginGoogle = async function(){
 
     try{
 
-        const result =
         await signInWithPopup(auth, provider);
-
-        console.log(
-            "UID:",
-            result.user.uid
-        );
-
-        alert("Login correcto");
 
     }catch(err){
 
         console.error(err);
+
+        alert("Error login");
     }
 }
 
 window.logoutGoogle = async function(){
 
     await signOut(auth);
-
-    alert("Sesión cerrada");
 }
 
 onAuthStateChanged(auth,(user)=>{
@@ -453,16 +449,26 @@ onAuthStateChanged(auth,(user)=>{
     const box =
     document.getElementById('userBox');
 
+    const loginBtn =
+    document.getElementById('loginBtn');
+
+    const logoutBtn =
+    document.getElementById('logoutBtn');
+
+    const saveBtn =
+    document.getElementById('saveBtn');
+
     if(user){
 
         currentUser = user;
 
-        box.innerHTML = `
-            Logueado:<br>
-            ${user.email}<br><br>
-            UID:<br>
-            ${user.uid}
-        `;
+        box.innerHTML = 'Conectado ✓';
+
+        loginBtn.style.display = 'none';
+
+        logoutBtn.style.display = 'block';
+
+        saveBtn.style.display = 'block';
 
         init();
 
@@ -470,11 +476,13 @@ onAuthStateChanged(auth,(user)=>{
 
         currentUser = null;
 
-        box.innerHTML = 'No logueado';
+        box.innerHTML = 'No conectado';
 
-        alert(
-            'Debes iniciar sesión'
-        );
+        loginBtn.style.display = 'block';
+
+        logoutBtn.style.display = 'none';
+
+        saveBtn.style.display = 'none';
     }
 });
 
@@ -560,8 +568,6 @@ async function saveFirebase(){
             grid:data
 
         });
-
-        console.log("JSON guardado");
 
     }catch(err){
 
