@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Albion Specs</title>
+<title>Albion Index</title>
 
 <style>
 
@@ -30,14 +30,20 @@ h1{
     gap:12px;
 }
 
+/* SLOT FIJO */
 .category{
     background:#1b1f2a;
     border-radius:14px;
     overflow:hidden;
-    cursor:pointer;
-    transition:.2s;
+    border:2px solid transparent;
 }
 
+/* OCULTO PERO OCUPA ESPACIO */
+.category.hidden{
+    visibility:hidden;
+}
+
+/* IMAGEN */
 .category img{
     width:100%;
     aspect-ratio:1/1;
@@ -45,10 +51,7 @@ h1{
     background:#222;
 }
 
-.category.hidden{
-    opacity:.08;
-}
-
+/* INFO */
 .categoryInfo{
     padding:10px;
     text-align:center;
@@ -57,8 +60,7 @@ h1{
 .categoryName{
     font-size:18px;
     font-weight:bold;
-    margin-bottom:8px;
-    line-height:1.2;
+    margin-bottom:6px;
 }
 
 .categoryTotal{
@@ -66,178 +68,24 @@ h1{
     opacity:.8;
 }
 
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.85);
-    display:none;
-    justify-content:center;
-    align-items:center;
-    z-index:1000;
-}
-
-.modal.active{
-    display:flex;
-}
-
-.modalBox{
-    width:1400px;
-    max-width:95%;
-    background:#161b25;
-    border-radius:20px;
-    padding:20px;
-}
-
-.specLayout{
-    display:grid;
-    grid-template-columns:250px 1fr;
-    gap:20px;
-}
-
-.totalCard{
-    background:#232938;
-    border-radius:16px;
-    overflow:hidden;
-}
-
-.totalCard img{
-    width:100%;
-    height:200px;
-    object-fit:cover;
-    background:#333;
-}
-
-.totalInfo{
-    padding:12px;
-    text-align:center;
-}
-
-.totalInfo div:first-child{
-    font-size:22px;
-    font-weight:bold;
-}
-
-.totalSpec{
-    margin-top:10px;
-    font-size:14px;
-    opacity:.8;
-}
-
-.weaponGrid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
-}
-
-.weapon{
-    background:#232938;
-    border-radius:16px;
-    overflow:hidden;
-    transition:.2s;
-}
-
-.weapon img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
-    background:#333;
-}
-
-.weaponInfo{
-    padding:10px;
-    text-align:center;
-}
-
-.weaponInfo div:first-child{
-    font-size:20px;
-    font-weight:bold;
-    margin-bottom:8px;
-}
-
-.weaponSpec{
-    font-size:14px;
-    opacity:.8;
-}
-
-button{
-    border:none;
-    background:#ff4d4d;
-    color:white;
-    padding:12px 16px;
-    border-radius:10px;
-    cursor:pointer;
-}
-
 .loading{
-    text-align:center;
-    font-size:22px;
+    margin-top:20px;
     opacity:.7;
-    margin-top:100px;
 }
 
 </style>
 </head>
 <body>
 
-<h1>Albion Crafter Specs</h1>
-
-<div id="loading" class="loading">
-    Cargando datos...
-</div>
+<h1>Albion Index</h1>
 
 <div class="grid" id="grid"></div>
 
-<!-- MODAL -->
-
-<div class="modal" id="specModal">
-
-    <div class="modalBox">
-
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-
-            <h2 id="modalTitle">
-                Categoria
-            </h2>
-
-            <button onclick="closeSpecs()">
-                Cerrar
-            </button>
-
-        </div>
-
-        <div class="specLayout">
-
-            <!-- TOTAL -->
-
-            <div class="totalCard">
-
-                <img id="categoryImage">
-
-                <div class="totalInfo">
-
-                    <div id="categoryName"></div>
-
-                    <div class="totalSpec" id="categorySpec">
-                        0 / 800
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- SPECS -->
-
-            <div class="weaponGrid" id="weaponGrid"></div>
-
-        </div>
-
-    </div>
-
+<div class="loading" id="status">
+    Cargando datos...
 </div>
 
 <script type="module">
-
-/* ================= FIREBASE ================= */
 
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
@@ -249,25 +97,23 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
 
-/* ================= CONFIG ================= */
+/* ================= FIREBASE ================= */
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBtjzpQfDrtTLqcTDXoJ2zbU5m0zJgL3gg",
-    authDomain: "boteb14-specs.firebaseapp.com",
-    databaseURL: "https://boteb14-specs-default-rtdb.firebaseio.com",
-    projectId: "boteb14-specs",
-    storageBucket: "boteb14-specs.firebasestorage.app",
-    messagingSenderId: "367869082958",
-    appId: "1:367869082958:web:13f602b79ddfa54fb9321f",
-    measurementId: "G-8BLE0PQ2MX"
-  };
-/* ================= INIT ================= */
+    apiKey: "TU_API_KEY",
+    authDomain: "TU_PROJECT.firebaseapp.com",
+    databaseURL: "https://TU_PROJECT-default-rtdb.firebaseio.com",
+    projectId: "TU_PROJECT",
+    storageBucket: "TU_PROJECT.appspot.com",
+    messagingSenderId: "123456",
+    appId: "APP_ID"
+};
 
 const app = initializeApp(firebaseConfig);
-
 const db = getDatabase(app);
-
 const dbRef = ref(db,'albionSpecs');
+
+/* ================= DATA ================= */
 
 let data = [];
 
@@ -275,44 +121,24 @@ let data = [];
 
 function total(category){
 
+    if(!category || !category.weapons) return 0;
+
     return category.weapons.reduce(
-        (a,b)=>a+b.spec,
+        (a,b)=>a + (b.spec || 0),
         0
     );
 }
 
-/* ================= FIREBASE LISTENER ================= */
+/* ================= RENDER ================= */
 
-onValue(dbRef,(snapshot)=>{
-
-    if(!snapshot.exists()){
-
-        document.getElementById('loading')
-        .innerText = 'No hay datos guardados';
-
-        return;
-    }
-
-    const json = snapshot.val();
-
-    data = json.grid;
-
-    document.getElementById('loading')
-    .style.display = 'none';
-
-    renderGrid();
-});
-
-/* ================= GRID ================= */
-
-function renderGrid(){
+function render(){
 
     const grid =
     document.getElementById('grid');
 
     grid.innerHTML = '';
 
-    data.forEach((cat,index)=>{
+    data.forEach((cat)=>{
 
         const div =
         document.createElement('div');
@@ -320,106 +146,46 @@ function renderGrid(){
         div.className = 'category';
 
         if(!cat.visible){
-
             div.classList.add('hidden');
         }
 
         div.innerHTML = `
-
-            <img src="${cat.image}">
-
+            <img src="${cat.image || ''}">
             <div class="categoryInfo">
-
                 <div class="categoryName">
-                    ${cat.name}
+                    ${cat.name || ''}
                 </div>
-
                 <div class="categoryTotal">
                     ${total(cat)} / 800
                 </div>
-
-            </div>
-        `;
-
-        div.onclick = ()=>openSpecs(index);
-
-        grid.appendChild(div);
-    });
-}
-
-/* ================= OPEN SPECS ================= */
-
-function openSpecs(index){
-
-    const cat = data[index];
-
-    document.getElementById('specModal')
-    .classList.add('active');
-
-    document.getElementById('modalTitle')
-    .innerText = cat.name;
-
-    document.getElementById('categoryImage')
-    .src = cat.image;
-
-    document.getElementById('categoryName')
-    .innerText = cat.name;
-
-    document.getElementById('categorySpec')
-    .innerText = total(cat) + ' / 800';
-
-    renderWeapons(cat);
-}
-
-/* ================= WEAPONS ================= */
-
-function renderWeapons(cat){
-
-    const grid =
-    document.getElementById('weaponGrid');
-
-    grid.innerHTML = '';
-
-    cat.weapons.forEach((weapon)=>{
-
-        const div =
-        document.createElement('div');
-
-        div.className = 'weapon';
-
-        if(!weapon.visible){
-
-            div.style.opacity = '.08';
-        }
-
-        div.innerHTML = `
-
-            <img src="${weapon.image}">
-
-            <div class="weaponInfo">
-
-                <div>
-                    ${weapon.name}
-                </div>
-
-                <div class="weaponSpec">
-                    ${weapon.spec}
-                </div>
-
             </div>
         `;
 
         grid.appendChild(div);
     });
+
+    document.getElementById('status').innerText =
+    'Sincronizado ✔';
 }
 
-/* ================= CLOSE ================= */
+/* ================= LISTENER REALTIME ================= */
 
-window.closeSpecs = function(){
+onValue(dbRef,(snapshot)=>{
 
-    document.getElementById('specModal')
-    .classList.remove('active');
-}
+    if(snapshot.exists()){
+
+        const json = snapshot.val();
+
+        data = json.grid || [];
+
+        render();
+
+    }else{
+
+        document.getElementById('status').innerText =
+        'Sin datos en Firebase';
+    }
+});
 
 </script>
 
