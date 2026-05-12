@@ -235,6 +235,36 @@ button:hover{
 </head>
 <body>
 
+    <script>
+        
+        const PASSWORD = "TU_PASSWORD";
+        
+        const pass = prompt("Contraseña");
+        
+        if(pass !== PASSWORD){
+        
+            document.body.innerHTML = `
+                <div style="
+                    background:#111;
+                    color:white;
+                    height:100vh;
+                    display:flex;
+                    justify-content:center;
+                    align-items:center;
+                    font-size:40px;
+                    font-family:Arial;
+                ">
+                    Acceso denegado
+                </div>
+            `;
+        
+            throw new Error("Unauthorized");
+        }
+        
+        </script>
+
+    
+
 <h1>Albion Specs Editor</h1>
 
 <div class="topbar">
