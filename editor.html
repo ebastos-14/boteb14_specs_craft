@@ -1,5 +1,3 @@
-<!-- ========================= editor.html ========================= -->
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -47,7 +45,7 @@ button{
 
 .grid{
     display:grid;
-    grid-template-columns:repeat(12,1fr);
+    grid-template-columns:repeat(10,1fr);
     gap:12px;
 }
 
@@ -76,24 +74,26 @@ button{
 }
 
 .categoryInfo{
-    padding:8px;
+    padding:10px;
     text-align:center;
 }
 
 .categoryName{
-    font-size:12px;
-    margin-bottom:6px;
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:8px;
+    line-height:1.2;
 }
 
 .categoryTotal{
-    font-size:18px;
-    font-weight:bold;
+    font-size:13px;
+    opacity:.8;
 }
 
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.8);
+    background:rgba(0,0,0,.85);
     display:none;
     justify-content:center;
     align-items:center;
@@ -137,10 +137,15 @@ button{
     text-align:center;
 }
 
+.totalInfo div:first-child{
+    font-size:22px;
+    font-weight:bold;
+}
+
 .totalSpec{
     margin-top:10px;
-    font-size:28px;
-    font-weight:bold;
+    font-size:14px;
+    opacity:.8;
 }
 
 .weaponGrid{
@@ -168,16 +173,21 @@ button{
     text-align:center;
 }
 
-.weaponSpec{
-    margin-top:8px;
-    font-size:24px;
+.weaponInfo div:first-child{
+    font-size:20px;
     font-weight:bold;
+    margin-bottom:8px;
+}
+
+.weaponSpec{
+    font-size:14px;
+    opacity:.8;
 }
 
 .editModal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.85);
+    background:rgba(0,0,0,.9);
     display:none;
     justify-content:center;
     align-items:center;
@@ -221,11 +231,9 @@ button{
 <h1>Albion Specs Editor</h1>
 
 <div class="topbar">
-
-    <button onclick="saveData()">
+    <button onclick="forceSave()">
         Guardar
     </button>
-
 </div>
 
 <div class="grid" id="grid"></div>
@@ -258,8 +266,6 @@ button{
 
         <div class="specLayout">
 
-            <!-- AZUL -->
-
             <div class="totalCard" onclick="openCategoryEdit()">
 
                 <img id="categoryImage">
@@ -276,8 +282,6 @@ button{
 
             </div>
 
-            <!-- ROJOS -->
-
             <div class="weaponGrid" id="weaponGrid"></div>
 
         </div>
@@ -292,11 +296,7 @@ button{
 
     <div class="editBox">
 
-        <!-- MORADO -->
-
         <img id="editPreview" class="editPreview">
-
-        <!-- AMARILLO -->
 
         <input id="editImage" placeholder="URL Imagen">
 
@@ -310,7 +310,11 @@ button{
             placeholder="Spec"
         >
 
-        <div style="display:flex;gap:10px;">
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+
+            <button id="hideWeaponBtn" onclick="toggleWeaponVisibility()">
+                Mostrar/Ocultar
+            </button>
 
             <button onclick="saveEdit()">
                 Guardar
@@ -357,24 +361,19 @@ const ref = doc(db,"albion","specs");
 let data = [];
 
 let currentCategory = 0;
-
 let currentWeapon = null;
-
 let editingCategory = false;
 
 async function init(){
 
-    // SIEMPRE CREAR LOS 48 CUADROS
     createDefault();
 
-    // MOSTRARLOS INMEDIATAMENTE
     renderGrid();
 
     try{
 
         const snap = await getDoc(ref);
 
-        // SI FIREBASE TIENE DATOS
         if(snap.exists()){
 
             data = snap.data().grid;
@@ -383,16 +382,13 @@ async function init(){
 
         }else{
 
-            // SI NO EXISTE
-            await saveData();
+            await saveFirebase();
         }
 
     }catch(err){
 
         console.error(err);
 
-        // SI FIREBASE FALLA
-        // IGUAL QUEDAN LOS 48
         renderGrid();
     }
 }
@@ -401,7 +397,7 @@ function createDefault(){
 
     data = [];
 
-    for(let i = 0; i < 48; i++){
+    for(let i = 0; i < 40; i++){
 
         const weapons = [];
 
@@ -410,31 +406,34 @@ function createDefault(){
             weapons.push({
 
                 image:"https://placehold.co/300x300/232938/ffffff?text=Spec",
-
                 name:`Spec ${w + 1}`,
+                spec:0,
+                visible:true
 
-                spec:0
             });
         }
 
         data.push({
 
             visible:true,
-
             image:"https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
-
             name:`Categoria ${i + 1}`,
-
             weapons
+
         });
     }
 }
 
-window.saveData = async function(){
+async function saveFirebase(){
 
     await setDoc(ref,{
         grid:data
     });
+}
+
+window.forceSave = async function(){
+
+    await saveFirebase();
 
     alert("Guardado");
 }
@@ -457,7 +456,6 @@ function renderGrid(){
         div.className = 'category';
 
         if(!cat.visible){
-
             div.classList.add('hidden');
         }
 
@@ -515,6 +513,10 @@ function renderWeapons(){
 
         div.className = 'weapon';
 
+        if(!weapon.visible){
+            div.style.opacity = '.08';
+        }
+
         div.innerHTML = `
 
             <img src="${weapon.image}">
@@ -543,9 +545,12 @@ window.closeSpecs = function(){
     document.getElementById('specModal').classList.remove('active');
 }
 
-window.toggleVisibility = function(){
+window.toggleVisibility = async function(){
 
-    data[currentCategory].visible = !data[currentCategory].visible;
+    data[currentCategory].visible =
+    !data[currentCategory].visible;
+
+    await saveFirebase();
 
     renderGrid();
 }
@@ -565,6 +570,8 @@ window.openCategoryEdit = function(){
     document.getElementById('editName').value = cat.name;
 
     document.getElementById('editSpec').style.display = 'none';
+
+    document.getElementById('hideWeaponBtn').style.display = 'none';
 }
 
 function openWeapon(index){
@@ -586,6 +593,8 @@ function openWeapon(index){
     document.getElementById('editSpec').value = weapon.spec;
 
     document.getElementById('editSpec').style.display = 'block';
+
+    document.getElementById('hideWeaponBtn').style.display = 'block';
 }
 
 window.closeEdit = function(){
@@ -598,11 +607,27 @@ document.getElementById('editImage').oninput = (e)=>{
     document.getElementById('editPreview').src = e.target.value;
 }
 
-window.saveEdit = function(){
+window.toggleWeaponVisibility = async function(){
 
-    const image = document.getElementById('editImage').value;
+    if(editingCategory) return;
 
-    const name = document.getElementById('editName').value;
+    const weapon =
+    data[currentCategory].weapons[currentWeapon];
+
+    weapon.visible = !weapon.visible;
+
+    await saveFirebase();
+
+    renderWeapons();
+}
+
+window.saveEdit = async function(){
+
+    const image =
+    document.getElementById('editImage').value;
+
+    const name =
+    document.getElementById('editName').value;
 
     if(editingCategory){
 
@@ -612,14 +637,25 @@ window.saveEdit = function(){
 
     }else{
 
-        const spec = parseInt(document.getElementById('editSpec').value) || 0;
+        const spec =
+        parseInt(
+            document.getElementById('editSpec').value
+        ) || 0;
 
-        data[currentCategory].weapons[currentWeapon].image = image;
+        data[currentCategory]
+        .weapons[currentWeapon]
+        .image = image;
 
-        data[currentCategory].weapons[currentWeapon].name = name;
+        data[currentCategory]
+        .weapons[currentWeapon]
+        .name = name;
 
-        data[currentCategory].weapons[currentWeapon].spec = spec;
+        data[currentCategory]
+        .weapons[currentWeapon]
+        .spec = spec;
     }
+
+    await saveFirebase();
 
     renderGrid();
 
