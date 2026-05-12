@@ -2,171 +2,6 @@
   "albionSpecs": {
     "grid": [
       {
-        "image": "https://render.albiononline.com/v1/item/T7_HEAD_PLATE_SET1",
-        "name": "Cascos",
-        "visible": true,
-        "weapons": [
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_SET1",
-            "name": "Soldado",
-            "spec": 4,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_SET2",
-            "name": "Caballero",
-            "spec": 14,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_SET3",
-            "name": "Guardian",
-            "spec": 46,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_UNDEAD",
-            "name": "Guardatumbas",
-            "spec": 5,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_HELL",
-            "name": "Demonio",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_KEEPER",
-            "name": "Juez",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_AVALON",
-            "name": "Valor",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_FEY",
-            "name": "Crepuscular",
-            "spec": 0,
-            "visible": true
-          }
-        ]
-      },
-      {
-        "image": "https://render.albiononline.com/v1/item/T7_ARMOR_PLATE_SET1.png?quality=2",
-        "name": "Armaduras",
-        "visible": true,
-        "weapons": [
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_SET1",
-            "name": "Soldado",
-            "spec": 12,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_SET2",
-            "name": "Caballero",
-            "spec": 13,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_SET3",
-            "name": "Guardian",
-            "spec": 41,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_UNDEAD",
-            "name": "Guardatumbas",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_HELL",
-            "name": "Demonio",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_KEEPER",
-            "name": "Juez",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_AVALON",
-            "name": "Valor",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_FEY",
-            "name": "Crepuscular",
-            "spec": 0,
-            "visible": true
-          }
-        ]
-      },
-      {
-        "image": "https://render.albiononline.com/v1/item/T7_SHOES_PLATE_SET1",
-        "name": "Botas",
-        "visible": true,
-        "weapons": [
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_SET1",
-            "name": "Soldado",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_SET2",
-            "name": "Caballero",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_SET3",
-            "name": "Guardian",
-            "spec": 42,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_UNDEAD",
-            "name": "Guardatumbas",
-            "spec": 18,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_HELL",
-            "name": "Demonio",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_KEEPER",
-            "name": "Juez",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_AVALON",
-            "name": "Valor",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_FEY",
-            "name": "Crepuscular",
-            "spec": 0,
-            "visible": true
-          }
-        ]
-      },
-      {
         "image": "https://render.albiononline.com/v1/item/T7_MAIN_SWORD",
         "name": "Espadas",
         "visible": true,
@@ -497,6 +332,171 @@
         ]
       },
       {
+        "image": "https://render.albiononline.com/v1/item/T7_HEAD_PLATE_SET1",
+        "name": "Cascos",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_SET1",
+            "name": "Soldado",
+            "spec": 4,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_SET2",
+            "name": "Caballero",
+            "spec": 14,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_SET3",
+            "name": "Guardian",
+            "spec": 46,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_UNDEAD",
+            "name": "Guardatumbas",
+            "spec": 5,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_HELL",
+            "name": "Demonio",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_KEEPER",
+            "name": "Juez",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_AVALON",
+            "name": "Valor",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_PLATE_FEY",
+            "name": "Crepuscular",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T7_ARMOR_PLATE_SET1.png?quality=2",
+        "name": "Armaduras",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_SET1",
+            "name": "Soldado",
+            "spec": 12,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_SET2",
+            "name": "Caballero",
+            "spec": 13,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_SET3",
+            "name": "Guardian",
+            "spec": 41,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_UNDEAD",
+            "name": "Guardatumbas",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_HELL",
+            "name": "Demonio",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_KEEPER",
+            "name": "Juez",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_AVALON",
+            "name": "Valor",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_PLATE_FEY",
+            "name": "Crepuscular",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T7_SHOES_PLATE_SET1",
+        "name": "Botas",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_SET1",
+            "name": "Soldado",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_SET2",
+            "name": "Caballero",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_SET3",
+            "name": "Guardian",
+            "spec": 42,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_UNDEAD",
+            "name": "Guardatumbas",
+            "spec": 18,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_HELL",
+            "name": "Demonio",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_KEEPER",
+            "name": "Juez",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_AVALON",
+            "name": "Valor",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_PLATE_FEY",
+            "name": "Crepuscular",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
         "image": "https://render.albiononline.com/v1/item/T7_OFF_SHIELD",
         "name": "Escudos",
         "visible": true,
@@ -548,171 +548,6 @@
             "name": "",
             "spec": 0,
             "visible": false
-          }
-        ]
-      },
-      {
-        "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_SET1",
-        "name": "Mercenario",
-        "visible": true,
-        "weapons": [
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_SET1",
-            "name": "Mercenario",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_SET2",
-            "name": "Cazador",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_SET3",
-            "name": "Asesino",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_MORGANA",
-            "name": "Acechador",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_HELL",
-            "name": "Vandalo",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_UNDEAD",
-            "name": "Espectro",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_AVALON",
-            "name": "Tenacidad",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_FEY",
-            "name": "Caminanieblas",
-            "spec": 0,
-            "visible": true
-          }
-        ]
-      },
-      {
-        "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_SET1",
-        "name": "Chaquetas",
-        "visible": true,
-        "weapons": [
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_SET1",
-            "name": "Mercenario",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_SET2",
-            "name": "Cazador",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_SET3",
-            "name": "Asesino",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_MORGANA",
-            "name": "Acechador",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_HELL",
-            "name": "Vandalo",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_UNDEAD",
-            "name": "Espectro",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_AVALON",
-            "name": "Tenacidad",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_FEY",
-            "name": "Caminanieblas",
-            "spec": 0,
-            "visible": true
-          }
-        ]
-      },
-      {
-        "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_SET1",
-        "name": "Zapatos",
-        "visible": true,
-        "weapons": [
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_SET1",
-            "name": "Mercenario",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_SET2",
-            "name": "Cazador",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_SET3",
-            "name": "Asesino",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_MORGANA",
-            "name": "Acechador",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_HELL",
-            "name": "Vandalo",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_UNDEAD",
-            "name": "Espectro",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_AVALON",
-            "name": "Tenacidad",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_FEY",
-            "name": "Caminanieblas",
-            "spec": 0,
-            "visible": true
           }
         ]
       },
@@ -1047,6 +882,171 @@
         ]
       },
       {
+        "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_SET1",
+        "name": "Mercenario",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_SET1",
+            "name": "Mercenario",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_SET2",
+            "name": "Cazador",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_SET3",
+            "name": "Asesino",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_MORGANA",
+            "name": "Acechador",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_HELL",
+            "name": "Vandalo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_UNDEAD",
+            "name": "Espectro",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_AVALON",
+            "name": "Tenacidad",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_LEATHER_FEY",
+            "name": "Caminanieblas",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_SET1",
+        "name": "Chaquetas",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_SET1",
+            "name": "Mercenario",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_SET2",
+            "name": "Cazador",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_SET3",
+            "name": "Asesino",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_MORGANA",
+            "name": "Acechador",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_HELL",
+            "name": "Vandalo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_UNDEAD",
+            "name": "Espectro",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_AVALON",
+            "name": "Tenacidad",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_LEATHER_FEY",
+            "name": "Caminanieblas",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_SET1",
+        "name": "Zapatos",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_SET1",
+            "name": "Mercenario",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_SET2",
+            "name": "Cazador",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_SET3",
+            "name": "Asesino",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_MORGANA",
+            "name": "Acechador",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_HELL",
+            "name": "Vandalo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_UNDEAD",
+            "name": "Espectro",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_AVALON",
+            "name": "Tenacidad",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_LEATHER_FEY",
+            "name": "Caminanieblas",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
         "image": "https://render.albiononline.com/v1/item/T7_OFF_TORCH",
         "name": "Antorchas",
         "visible": true,
@@ -1098,171 +1098,6 @@
             "name": "",
             "spec": 0,
             "visible": false
-          }
-        ]
-      },
-      {
-        "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_SET1",
-        "name": "Habitos",
-        "visible": true,
-        "weapons": [
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_SET1",
-            "name": "Erudito",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_SET2",
-            "name": "Clerigo",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_SET3",
-            "name": "Mago",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_KEEPER",
-            "name": "Druida",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_HELL",
-            "name": "Diablo",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_MORGANA",
-            "name": "Sectario",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_AVALON",
-            "name": "Pureza",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_FEY",
-            "name": "Escamas Feericas",
-            "spec": 0,
-            "visible": true
-          }
-        ]
-      },
-      {
-        "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_SET1",
-        "name": "Tunicas",
-        "visible": true,
-        "weapons": [
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_SET1",
-            "name": "Erudito",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_SET2",
-            "name": "Clerigo",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_SET3",
-            "name": "Mago",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_KEEPER",
-            "name": "Druida",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_HELL",
-            "name": "Diablo",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_MORGANA",
-            "name": "Sectario",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_AVALON",
-            "name": "Pureza",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_FEY",
-            "name": "Escamas Feericas",
-            "spec": 0,
-            "visible": true
-          }
-        ]
-      },
-      {
-        "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_SET1",
-        "name": "Sandalias",
-        "visible": true,
-        "weapons": [
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_SET1",
-            "name": "Erudito",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_SET2",
-            "name": "Clerigo",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_SET3",
-            "name": "Mago",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_KEEPER",
-            "name": "Druida",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_HELL",
-            "name": "Diablo",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_MORGANA",
-            "name": "Sectario",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_AVALON",
-            "name": "Pureza",
-            "spec": 0,
-            "visible": true
-          },
-          {
-            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_FEY",
-            "name": "Escamas Feericas",
-            "spec": 0,
-            "visible": true
           }
         ]
       },
@@ -1591,6 +1426,171 @@
           {
             "image": "https://placehold.co/300x300/232938/ffffff?text=Spec",
             "name": "Spec 8",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_SET1",
+        "name": "Habitos",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_SET1",
+            "name": "Erudito",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_SET2",
+            "name": "Clerigo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_SET3",
+            "name": "Mago",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_KEEPER",
+            "name": "Druida",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_HELL",
+            "name": "Diablo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_MORGANA",
+            "name": "Sectario",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_AVALON",
+            "name": "Pureza",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_HEAD_CLOTH_FEY",
+            "name": "Escamas Feericas",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_SET1",
+        "name": "Tunicas",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_SET1",
+            "name": "Erudito",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_SET2",
+            "name": "Clerigo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_SET3",
+            "name": "Mago",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_KEEPER",
+            "name": "Druida",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_HELL",
+            "name": "Diablo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_MORGANA",
+            "name": "Sectario",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_AVALON",
+            "name": "Pureza",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_ARMOR_CLOTH_FEY",
+            "name": "Escamas Feericas",
+            "spec": 0,
+            "visible": true
+          }
+        ]
+      },
+      {
+        "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_SET1",
+        "name": "Sandalias",
+        "visible": true,
+        "weapons": [
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_SET1",
+            "name": "Erudito",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_SET2",
+            "name": "Clerigo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_SET3",
+            "name": "Mago",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_KEEPER",
+            "name": "Druida",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_HELL",
+            "name": "Diablo",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_MORGANA",
+            "name": "Sectario",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_AVALON",
+            "name": "Pureza",
+            "spec": 0,
+            "visible": true
+          },
+          {
+            "image": "https://render.albiononline.com/v1/item/T8_SHOES_CLOTH_FEY",
+            "name": "Escamas Feericas",
             "spec": 0,
             "visible": true
           }
