@@ -1,0 +1,468 @@
+<!-- ========================================================= -->
+<!-- ======================= editor.html ===================== -->
+<!-- ========================================================= -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Albion Specs Editor</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0f1115;
+    color:white;
+    font-family:Arial;
+    padding:20px;
+}
+
+h1{
+    margin-bottom:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:12px;
+}
+
+.card{
+    background:#1b1f2a;
+    border-radius:12px;
+    overflow:hidden;
+    cursor:pointer;
+    min-height:180px;
+    display:flex;
+    flex-direction:column;
+    transition:.2s;
+    border:2px solid transparent;
+}
+
+.card:hover{
+    border-color:#4b7cff;
+}
+
+.card.hidden{
+    opacity:.15;
+}
+
+.card img{
+    width:100%;
+    height:120px;
+    object-fit:cover;
+    background:#222;
+}
+
+.cardContent{
+    padding:10px;
+}
+
+.cardTitle{
+    font-size:14px;
+    margin-bottom:6px;
+}
+
+.cardTotal{
+    font-size:18px;
+    font-weight:bold;
+}
+
+.topbar{
+    margin-bottom:20px;
+    display:flex;
+    gap:10px;
+}
+
+button{
+    border:none;
+    background:#3d6cff;
+    color:white;
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:999;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modalBox{
+    width:1200px;
+    max-width:95%;
+    background:#161b25;
+    border-radius:20px;
+    padding:20px;
+}
+
+.modalHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.modalGrid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.specCard{
+    background:#222836;
+    border-radius:14px;
+    overflow:hidden;
+    padding-bottom:10px;
+}
+
+.specCard img{
+    width:100%;
+    height:140px;
+    object-fit:cover;
+    background:#333;
+}
+
+.specContent{
+    padding:10px;
+}
+
+.specContent input{
+    width:100%;
+    margin-top:8px;
+    background:#161b25;
+    border:none;
+    color:white;
+    padding:8px;
+    border-radius:8px;
+}
+
+.mainEdit{
+    margin-bottom:20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.mainEdit input{
+    width:100%;
+    background:#222836;
+    border:none;
+    color:white;
+    padding:10px;
+    border-radius:8px;
+}
+
+</style>
+</head>
+<body>
+
+<h1>Albion Specs Editor</h1>
+
+<div class="topbar">
+    <button onclick="saveData()">Guardar</button>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<div class="modal" id="modal">
+
+    <div class="modalBox">
+
+        <div class="modalHeader">
+            <h2 id="modalTitle">Editar</h2>
+            <button onclick="closeModal()">Cerrar</button>
+        </div>
+
+        <div class="mainEdit">
+
+            <div>
+                <input id="mainTitle" placeholder="Título">
+            </div>
+
+            <div>
+                <input id="mainImage" placeholder="URL imagen">
+            </div>
+
+        </div>
+
+        <div style="margin-bottom:20px;">
+            <button onclick="toggleVisibility()">Mostrar/Ocultar</button>
+        </div>
+
+        <div class="modalGrid" id="modalGrid"></div>
+
+    </div>
+
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import {
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc
+} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "TU_API_KEY",
+    authDomain: "TU_AUTH_DOMAIN",
+    projectId: "TU_PROJECT_ID",
+    storageBucket: "TU_STORAGE_BUCKET",
+    messagingSenderId: "TU_MESSAGING_ID",
+    appId: "TU_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const ref = doc(db,"albion","specs");
+
+let data = [];
+
+let currentIndex = 0;
+
+async function init(){
+
+    const snap = await getDoc(ref);
+
+    if(snap.exists()){
+
+        data = snap.data().grid;
+
+    }else{
+
+        createDefault();
+        await saveData();
+
+    }
+
+    render();
+
+}
+
+function createDefault(){
+
+    data = [];
+
+    for(let i=0;i<48;i++){
+
+        let specs = [];
+
+        for(let s=0;s<8;s++){
+
+            specs.push({
+                title:"",
+                image:"",
+                value:0
+            });
+
+        }
+
+        data.push({
+            visible:true,
+            title:`Slot ${i+1}`,
+            image:"",
+            specs
+        });
+
+    }
+
+}
+
+window.saveData = async function(){
+
+    await setDoc(ref,{
+        grid:data
+    });
+
+    alert("Guardado");
+
+}
+
+function totalSpecs(slot){
+
+    return slot.specs.reduce((a,b)=>a+b.value,0);
+
+}
+
+function render(){
+
+    const grid = document.getElementById('grid');
+
+    grid.innerHTML = '';
+
+    data.forEach((slot,index)=>{
+
+        const div = document.createElement('div');
+
+        div.className = 'card';
+
+        if(!slot.visible){
+            div.classList.add('hidden');
+        }
+
+        div.onclick = ()=>openModal(index);
+
+        div.innerHTML = `
+            <img src="${slot.image || ''}">
+            <div class="cardContent">
+                <div class="cardTitle">${slot.title}</div>
+                <div class="cardTotal">${totalSpecs(slot)} / 800</div>
+            </div>
+        `;
+
+        grid.appendChild(div);
+
+    });
+
+}
+
+function openModal(index){
+
+    currentIndex = index;
+
+    const slot = data[index];
+
+    document.getElementById('modal').classList.add('active');
+
+    document.getElementById('modalTitle').innerText = slot.title;
+
+    document.getElementById('mainTitle').value = slot.title;
+
+    document.getElementById('mainImage').value = slot.image;
+
+    renderSpecs();
+
+}
+
+window.closeModal = function(){
+
+    document.getElementById('modal').classList.remove('active');
+
+}
+
+window.toggleVisibility = function(){
+
+    data[currentIndex].visible = !data[currentIndex].visible;
+
+    render();
+
+}
+
+function renderSpecs(){
+
+    const slot = data[currentIndex];
+
+    const modalGrid = document.getElementById('modalGrid');
+
+    modalGrid.innerHTML = '';
+
+    document.getElementById('mainTitle').oninput = (e)=>{
+
+        slot.title = e.target.value;
+
+        render();
+
+    }
+
+    document.getElementById('mainImage').oninput = (e)=>{
+
+        slot.image = e.target.value;
+
+        render();
+
+    }
+
+    slot.specs.forEach((spec,index)=>{
+
+        const div = document.createElement('div');
+
+        div.className = 'specCard';
+
+        div.innerHTML = `
+            <img src="${spec.image || ''}">
+
+            <div class="specContent">
+
+                <input
+                    value="${spec.title}"
+                    placeholder="Nombre"
+                    class="titleInput"
+                >
+
+                <input
+                    value="${spec.image}"
+                    placeholder="URL Imagen"
+                    class="imageInput"
+                >
+
+                <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    value="${spec.value}"
+                    class="valueInput"
+                >
+
+            </div>
+        `;
+
+        const titleInput = div.querySelector('.titleInput');
+        const imageInput = div.querySelector('.imageInput');
+        const valueInput = div.querySelector('.valueInput');
+
+        titleInput.oninput = (e)=>{
+
+            spec.title = e.target.value;
+
+            render();
+
+        }
+
+        imageInput.oninput = (e)=>{
+
+            spec.image = e.target.value;
+
+            renderSpecs();
+            render();
+
+        }
+
+        valueInput.oninput = (e)=>{
+
+            spec.value = parseInt(e.target.value) || 0;
+
+            render();
+
+        }
+
+        modalGrid.appendChild(div);
+
+    });
+
+}
+
+init();
+
+</script>
+
+</body>
+</html>
