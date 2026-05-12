@@ -1,7 +1,3 @@
-<!-- ========================================================= -->
-<!-- ======================== index.html ===================== -->
-<!-- ========================================================= -->
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -30,39 +26,129 @@ body{
     gap:12px;
 }
 
-.card{
+.category{
     background:#1b1f2a;
-    border-radius:12px;
+    border-radius:14px;
     overflow:hidden;
-    min-height:180px;
-    display:flex;
-    flex-direction:column;
+    cursor:pointer;
 }
 
-.card.hidden{
-    opacity:0;
-    pointer-events:none;
+.category.hidden{
+    opacity:.08;
 }
 
-.card img{
+.category img{
     width:100%;
-    height:120px;
+    aspect-ratio:1/1;
     object-fit:cover;
     background:#222;
 }
 
-.cardContent{
-    padding:10px;
+.categoryInfo{
+    padding:8px;
+    text-align:center;
 }
 
-.cardTitle{
-    font-size:14px;
-    margin-bottom:6px;
+.categoryName{
+    font-size:12px;
+    margin-bottom:5px;
 }
 
-.cardTotal{
+.categoryTotal{
     font-size:18px;
     font-weight:bold;
+}
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.8);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modalBox{
+    width:1400px;
+    max-width:95%;
+    background:#161b25;
+    border-radius:20px;
+    padding:20px;
+}
+
+.specHeader{
+    display:grid;
+    grid-template-columns:250px 1fr;
+    gap:20px;
+    margin-bottom:25px;
+}
+
+.totalCard{
+    background:#232938;
+    border-radius:16px;
+    overflow:hidden;
+}
+
+.totalCard img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    background:#333;
+}
+
+.totalInfo{
+    padding:12px;
+    text-align:center;
+}
+
+.totalValue{
+    font-size:28px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.specGrid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.weapon{
+    background:#232938;
+    border-radius:16px;
+    overflow:hidden;
+}
+
+.weapon img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    background:#333;
+}
+
+.weaponInfo{
+    padding:10px;
+    text-align:center;
+}
+
+.weaponSpec{
+    margin-top:8px;
+    font-size:24px;
+    font-weight:bold;
+}
+
+button{
+    border:none;
+    background:#ff4d4d;
+    color:white;
+    padding:12px 16px;
+    border-radius:10px;
+    cursor:pointer;
 }
 
 </style>
@@ -73,9 +159,50 @@ body{
 
 <div class="grid" id="grid"></div>
 
+<div class="modal" id="specModal">
+
+    <div class="modalBox">
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+
+            <h2 id="modalTitle">Categoria</h2>
+
+            <button onclick="closeSpecs()">
+                Cerrar
+            </button>
+
+        </div>
+
+        <div class="specHeader">
+
+            <div class="totalCard">
+
+                <img id="totalImage">
+
+                <div class="totalInfo">
+
+                    <div id="totalName"></div>
+
+                    <div class="totalValue" id="totalValue">
+                        0 / 800
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="specGrid" id="specGrid"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+
 import {
     getFirestore,
     doc,
@@ -83,61 +210,131 @@ import {
 } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
 const firebaseConfig = {
+
     apiKey: "TU_API_KEY",
-    authDomain: "TU_AUTH_DOMAIN",
-    projectId: "TU_PROJECT_ID",
-    storageBucket: "TU_STORAGE_BUCKET",
-    messagingSenderId: "TU_MESSAGING_ID",
-    appId: "TU_APP_ID"
+    authDomain: "TU_PROJECT.firebaseapp.com",
+    projectId: "TU_PROJECT",
+    storageBucket: "TU_PROJECT.appspot.com",
+    messagingSenderId: "123456",
+    appId: "APP_ID"
+
 };
 
 const app = initializeApp(firebaseConfig);
+
 const db = getFirestore(app);
 
 const ref = doc(db,"albion","specs");
 
-function totalSpecs(slot){
+let data = [];
 
-    return slot.specs.reduce((a,b)=>a+b.value,0);
+function total(category){
 
+    return category.weapons.reduce((a,b)=>a+b.spec,0);
 }
 
 onSnapshot(ref,(snap)=>{
 
     if(!snap.exists()) return;
 
-    render(snap.data().grid);
+    data = snap.data().grid;
 
+    renderGrid();
 });
 
-function render(data){
+function renderGrid(){
 
     const grid = document.getElementById('grid');
 
     grid.innerHTML = '';
 
-    data.forEach((slot)=>{
+    data.forEach((cat,index)=>{
 
         const div = document.createElement('div');
 
-        div.className = 'card';
+        div.className = 'category';
 
-        if(!slot.visible){
+        if(!cat.visible){
+
             div.classList.add('hidden');
         }
 
         div.innerHTML = `
-            <img src="${slot.image || ''}">
-            <div class="cardContent">
-                <div class="cardTitle">${slot.title}</div>
-                <div class="cardTotal">${totalSpecs(slot)} / 800</div>
+
+            <img src="${cat.image || ''}">
+
+            <div class="categoryInfo">
+
+                <div class="categoryName">
+                    ${cat.name}
+                </div>
+
+                <div class="categoryTotal">
+                    ${total(cat)} / 800
+                </div>
+
+            </div>
+        `;
+
+        div.onclick = ()=>openSpecs(index);
+
+        grid.appendChild(div);
+    });
+}
+
+function openSpecs(index){
+
+    const category = data[index];
+
+    document.getElementById('specModal').classList.add('active');
+
+    document.getElementById('modalTitle').innerText = category.name;
+
+    document.getElementById('totalImage').src = category.image || '';
+
+    document.getElementById('totalName').innerText = category.name;
+
+    document.getElementById('totalValue').innerText = total(category) + ' / 800';
+
+    renderWeapons(category);
+}
+
+function renderWeapons(category){
+
+    const grid = document.getElementById('specGrid');
+
+    grid.innerHTML = '';
+
+    category.weapons.forEach((weapon)=>{
+
+        const div = document.createElement('div');
+
+        div.className = 'weapon';
+
+        div.innerHTML = `
+
+            <img src="${weapon.image || ''}">
+
+            <div class="weaponInfo">
+
+                <div>
+                    ${weapon.name}
+                </div>
+
+                <div class="weaponSpec">
+                    ${weapon.spec}
+                </div>
+
             </div>
         `;
 
         grid.appendChild(div);
-
     });
+}
 
+window.closeSpecs = function(){
+
+    document.getElementById('specModal').classList.remove('active');
 }
 
 </script>
