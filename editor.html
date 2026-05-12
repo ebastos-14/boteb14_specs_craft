@@ -28,6 +28,7 @@ h1{
     display:flex;
     gap:10px;
     margin-bottom:20px;
+    flex-wrap:wrap;
 }
 
 button{
@@ -164,7 +165,6 @@ button:hover{
     border-radius:16px;
     overflow:hidden;
     cursor:pointer;
-    transition:.2s;
 }
 
 .weapon img{
@@ -231,43 +231,32 @@ button:hover{
     font-size:15px;
 }
 
+.userBox{
+    background:#1b1f2a;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
 </style>
 </head>
 <body>
 
-    <script>
-        
-        const PASSWORD = "TU_PASSWORD";
-        
-        const pass = prompt("Contraseña");
-        
-        if(pass !== PASSWORD){
-        
-            document.body.innerHTML = `
-                <div style="
-                    background:#111;
-                    color:white;
-                    height:100vh;
-                    display:flex;
-                    justify-content:center;
-                    align-items:center;
-                    font-size:40px;
-                    font-family:Arial;
-                ">
-                    Acceso denegado
-                </div>
-            `;
-        
-            throw new Error("Unauthorized");
-        }
-        
-        </script>
-
-    
-
 <h1>Albion Specs Editor</h1>
 
+<div class="userBox" id="userBox">
+    No logueado
+</div>
+
 <div class="topbar">
+
+    <button onclick="loginGoogle()">
+        Login Google
+    </button>
+
+    <button onclick="logoutGoogle()">
+        Logout
+    </button>
 
     <button id="saveBtn" onclick="forceSave()">
         Guardar JSON
@@ -305,8 +294,6 @@ button:hover{
 
         <div class="specLayout">
 
-            <!-- AZUL -->
-
             <div class="totalCard" onclick="openCategoryEdit()">
 
                 <img id="categoryImage">
@@ -322,8 +309,6 @@ button:hover{
                 </div>
 
             </div>
-
-            <!-- ROJOS -->
 
             <div class="weaponGrid" id="weaponGrid"></div>
 
@@ -388,24 +373,40 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
 
+import {
+    getAuth,
+    GoogleAuthProvider,
+    signInWithPopup,
+    onAuthStateChanged,
+    signOut
+}
+from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
 /* ================= CONFIG ================= */
-    
+
 const firebaseConfig = {
-    apiKey: "AIzaSyBtjzpQfDrtTLqcTDXoJ2zbU5m0zJgL3gg",
-    authDomain: "boteb14-specs.firebaseapp.com",
-    databaseURL: "https://boteb14-specs-default-rtdb.firebaseio.com",
-    projectId: "boteb14-specs",
-    storageBucket: "boteb14-specs.firebasestorage.app",
-    messagingSenderId: "367869082958",
-    appId: "1:367869082958:web:13f602b79ddfa54fb9321f",
-    measurementId: "G-8BLE0PQ2MX"
-  };
+
+    apiKey: "TU_API_KEY",
+    authDomain: "TU_PROJECT.firebaseapp.com",
+    databaseURL: "https://TU_PROJECT-default-rtdb.firebaseio.com",
+    projectId: "TU_PROJECT",
+    storageBucket: "TU_PROJECT.appspot.com",
+    messagingSenderId: "123456",
+    appId: "APP_ID"
+
+};
+
+/* ================= INIT ================= */
 
 const app = initializeApp(firebaseConfig);
 
 const db = getDatabase(app);
 
 const dbRef = ref(db,'albionSpecs');
+
+const auth = getAuth(app);
+
+const provider = new GoogleAuthProvider();
 
 /* ================= DATA ================= */
 
@@ -416,6 +417,67 @@ let currentCategory = 0;
 let currentWeapon = null;
 
 let editingCategory = false;
+
+let currentUser = null;
+
+/* ================= AUTH ================= */
+
+window.loginGoogle = async function(){
+
+    try{
+
+        const result =
+        await signInWithPopup(auth, provider);
+
+        console.log(
+            "UID:",
+            result.user.uid
+        );
+
+        alert("Login correcto");
+
+    }catch(err){
+
+        console.error(err);
+    }
+}
+
+window.logoutGoogle = async function(){
+
+    await signOut(auth);
+
+    alert("Sesión cerrada");
+}
+
+onAuthStateChanged(auth,(user)=>{
+
+    const box =
+    document.getElementById('userBox');
+
+    if(user){
+
+        currentUser = user;
+
+        box.innerHTML = `
+            Logueado:<br>
+            ${user.email}<br><br>
+            UID:<br>
+            ${user.uid}
+        `;
+
+        init();
+
+    }else{
+
+        currentUser = null;
+
+        box.innerHTML = 'No logueado';
+
+        alert(
+            'Debes iniciar sesión'
+        );
+    }
+});
 
 /* ================= INIT ================= */
 
@@ -481,9 +543,16 @@ function createDefault(){
     }
 }
 
-/* ================= SAVE JSON ================= */
+/* ================= SAVE ================= */
 
 async function saveFirebase(){
+
+    if(!currentUser){
+
+        alert("No autenticado");
+
+        return;
+    }
 
     try{
 
@@ -530,7 +599,8 @@ window.forceSave = async function(){
 function total(category){
 
     return category.weapons.reduce(
-        (a,b)=>a+b.spec,0
+        (a,b)=>a+b.spec,
+        0
     );
 }
 
@@ -578,7 +648,7 @@ function renderGrid(){
     });
 }
 
-/* ================= OPEN SPECS ================= */
+/* ================= SPECS ================= */
 
 function openSpecs(index){
 
@@ -603,8 +673,6 @@ function openSpecs(index){
 
     renderWeapons();
 }
-
-/* ================= RENDER WEAPONS ================= */
 
 function renderWeapons(){
 
@@ -658,7 +726,7 @@ window.closeSpecs = function(){
     .classList.remove('active');
 }
 
-/* ================= CATEGORY VISIBILITY ================= */
+/* ================= TOGGLE CATEGORY ================= */
 
 window.toggleVisibility = function(){
 
@@ -762,7 +830,7 @@ window.toggleWeaponVisibility = function(){
     renderWeapons();
 }
 
-/* ================= APPLY EDIT ================= */
+/* ================= SAVE EDIT ================= */
 
 window.saveEdit = function(){
 
@@ -807,10 +875,6 @@ window.saveEdit = function(){
 
     closeEdit();
 }
-
-/* ================= START ================= */
-
-init();
 
 </script>
 
