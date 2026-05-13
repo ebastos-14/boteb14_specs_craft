@@ -45,10 +45,6 @@ h1{
     background:#222;
 }
 
-.category.hidden{
-    opacity:.08;
-}
-
 .categoryInfo{
     padding:10px;
     text-align:center;
@@ -252,15 +248,17 @@ from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
 /* ================= CONFIG ================= */
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBtjzpQfDrtTLqcTDXoJ2zbU5m0zJgL3gg",
-    authDomain: "boteb14-specs.firebaseapp.com",
-    databaseURL: "https://boteb14-specs-default-rtdb.firebaseio.com",
-    projectId: "boteb14-specs",
-    storageBucket: "boteb14-specs.firebasestorage.app",
-    messagingSenderId: "367869082958",
-    appId: "1:367869082958:web:13f602b79ddfa54fb9321f",
-    measurementId: "G-8BLE0PQ2MX"
-  };
+
+    apiKey: "TU_API_KEY",
+    authDomain: "TU_PROJECT.firebaseapp.com",
+    databaseURL: "https://TU_PROJECT-default-rtdb.firebaseio.com",
+    projectId: "TU_PROJECT",
+    storageBucket: "TU_PROJECT.appspot.com",
+    messagingSenderId: "123456",
+    appId: "APP_ID"
+
+};
+
 /* ================= INIT ================= */
 
 const app = initializeApp(firebaseConfig);
@@ -319,9 +317,15 @@ function renderGrid(){
 
         div.className = 'category';
 
+        /* ================= HIDDEN ================= */
+
         if(!cat.visible){
 
-            div.classList.add('hidden');
+            div.style.opacity = '0';
+
+            div.style.pointerEvents = 'none';
+
+            div.style.userSelect = 'none';
         }
 
         div.innerHTML = `
@@ -341,7 +345,12 @@ function renderGrid(){
             </div>
         `;
 
-        div.onclick = ()=>openSpecs(index);
+        /* ================= CLICK ================= */
+
+        if(cat.visible){
+
+            div.onclick = ()=>openSpecs(index);
+        }
 
         grid.appendChild(div);
     });
