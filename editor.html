@@ -1,1013 +1,1014 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Albion Editor</title>
-
-<style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="ICONO_R.png">
+        <title>EBastos14 Crafter Specs Editor</title>
+        
+        <style>
+        
+        *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+            }
+            
+            body{
+                background:#0f1115;
+                color:white;
+                font-family:Arial;
+                padding:20px;
+            }
+            
+            h1{
+                margin-bottom:20px;
+            }
+            
+            .topbar{
+                display:flex;
+                gap:10px;
+                margin-bottom:20px;
+                flex-wrap:wrap;
+            }
+            
+            button{
+                border:none;
+                background:#4b7cff;
+                color:white;
+                padding:12px 16px;
+                border-radius:10px;
+                cursor:pointer;
+                transition:.2s;
+            }
+            
+            button:hover{
+                opacity:.9;
+            }
+            
+            .closeBtn{
+                background:#ff4d4d;
+            }
+            
+            .grid{
+                display:grid;
+                grid-template-columns:repeat(10,1fr);
+                gap:12px;
+            }
+            
+            .category{
+                background:#1b1f2a;
+                border-radius:14px;
+                overflow:hidden;
+                cursor:pointer;
+                border:2px solid transparent;
+                transition:.2s;
+                width:100%;
+                min-width:0;
+            }
+            
+            .category:hover{
+                border-color:#4b7cff;
+            }
+            
+            .category.hidden{
+                opacity:.08;
+            }
+            
+            .category img{
+                width:100%;
+                aspect-ratio:1/1;
+                object-fit:cover;
+                background:#222;
+            }
+            
+            .categoryInfo{
+                padding:10px;
+                text-align:center;
+            }
+            
+            .categoryName{
+                font-size:18px;
+                font-weight:bold;
+                margin-bottom:8px;
+                line-height:1.2;
+            }
+            
+            .categoryTotal{
+                font-size:13px;
+                opacity:.8;
+            }
+            
+            .modal{
+                position:fixed;
+                inset:0;
+                background:rgba(0,0,0,.85);
+                display:none;
+                justify-content:center;
+                align-items:center;
+                z-index:1000;
+            }
+            
+            .modal.active{
+                display:flex;
+            }
+            
+            .modalBox{
+                width:1400px;
+                max-width:95%;
+                background:#161b25;
+                border-radius:20px;
+                padding:20px;
+            }
+            
+            .specLayout{
+                display:grid;
+                grid-template-columns:250px 1fr;
+                gap:20px;
+            }
+            
+            .totalCard{
+                background:#232938;
+                border-radius:16px;
+                overflow:hidden;
+                cursor:pointer;
+            }
+            
+            .totalCard img{
+                width:100%;
+                height:200px;
+                object-fit:cover;
+                background:#333;
+            }
+            
+            .totalInfo{
+                padding:12px;
+                text-align:center;
+            }
+            
+            .totalInfo div:first-child{
+                font-size:22px;
+                font-weight:bold;
+            }
+            
+            .totalSpec{
+                margin-top:10px;
+                font-size:14px;
+                opacity:.8;
+            }
+            
+            .weaponGrid{
+                display:grid;
+                grid-template-columns:repeat(4,1fr);
+                gap:20px;
+            }
+            
+            .weapon{
+                background:#232938;
+                border-radius:16px;
+                overflow:hidden;
+                cursor:pointer;
+            }
+            
+            .weapon img{
+                width:100%;
+                height:180px;
+                object-fit:cover;
+                background:#333;
+            }
+            
+            .weaponInfo{
+                padding:10px;
+                text-align:center;
+            }
+            
+            .weaponInfo div:first-child{
+                font-size:20px;
+                font-weight:bold;
+                margin-bottom:8px;
+            }
+            
+            .weaponSpec{
+                font-size:14px;
+                opacity:.8;
+            }
+            
+            .editModal{
+                position:fixed;
+                inset:0;
+                background:rgba(0,0,0,.9);
+                display:none;
+                justify-content:center;
+                align-items:center;
+                z-index:2000;
+            }
+            
+            .editModal.active{
+                display:flex;
+            }
+            
+            .editBox{
+                width:500px;
+                background:#161b25;
+                border-radius:20px;
+                padding:20px;
+            }
+            
+            .editPreview{
+                width:100%;
+                height:240px;
+                object-fit:cover;
+                background:#333;
+                border-radius:16px;
+                margin-bottom:20px;
+            }
+            
+            .editBox input{
+                width:100%;
+                margin-bottom:15px;
+                padding:14px;
+                border:none;
+                border-radius:12px;
+                background:#232938;
+                color:white;
+                font-size:15px;
+            }
+            
+            .userBox{
+                background:#1b1f2a;
+                padding:12px;
+                border-radius:10px;
+                margin-bottom:20px;
+            }
+            
+            /* ================= MOBILE VERTICAL ================= */
+            
+            @media (max-width: 900px) and (orientation: portrait){
+            
+                body{
+                    padding:12px;
+                }
+            
+                /* ================= GRID PRINCIPAL ================= */
+            
+                .grid{
+            
+                    display:grid;
+            
+                    grid-template-rows:repeat(10,minmax(0,1fr));
+            
+                    grid-auto-flow:column;
+            
+                    grid-auto-columns:calc((100vw - 60px) / 4);
+            
+                    justify-content:center;
+            
+                    width:100%;
+            
+                    gap:10px;
+                }
+            
+                .category{
+            
+                    width:100%;
+            
+                    min-width:0;
+                }
+            
+                .categoryName{
+                    font-size:15px;
+                }
+            
+                .categoryTotal{
+                    font-size:12px;
+                }
+            
+                /* ================= MODAL ================= */
+            
+                .modal{
+                    align-items:flex-start;
+                    overflow:auto;
+                    padding:20px 0;
+                }
+            
+                .modalBox{
+            
+                    width:95%;
+            
+                    padding:16px;
+                }
+            
+                /* ================= SPECS ================= */
+            
+                .specLayout{
+            
+                    grid-template-columns:1fr;
+            
+                    gap:20px;
+                }
+            
+                /* ================= CARD TOTAL ================= */
+            
+                .totalCard{
+            
+                    width:100%;
+                }
+            
+                .totalCard img{
+            
+                    height:220px;
+                }
+            
+                /* ================= GRID ARMAS ================= */
+            
+                .weaponGrid{
+            
+                    grid-template-columns:repeat(2,1fr);
+            
+                    gap:12px;
+                }
+            
+                .weapon img{
+            
+                    height:140px;
+                }
+            
+                .weaponInfo div:first-child{
+            
+                    font-size:16px;
+                }
+            
+                /* ================= EDIT MODAL ================= */
+            
+                .editModal{
+            
+                    overflow:auto;
+                    padding:20px 0;
+                }
+            
+                .editBox{
+            
+                    width:95%;
+                }
+            
+                .editPreview{
+            
+                    height:220px;
+                }
+            
+                /* ================= BOTONES ================= */
+            
+                .topbar{
+            
+                    flex-direction:column;
+                }
+            
+                button{
+            
+                    width:100%;
+                }
+            }
+        
+        </style>
+    </head>
+    <body>
     
-    *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    background:#0f1115;
-    color:white;
-    font-family:Arial;
-    padding:20px;
-}
-
-h1{
-    margin-bottom:20px;
-}
-
-.topbar{
-    display:flex;
-    gap:10px;
-    margin-bottom:20px;
-    flex-wrap:wrap;
-}
-
-button{
-    border:none;
-    background:#4b7cff;
-    color:white;
-    padding:12px 16px;
-    border-radius:10px;
-    cursor:pointer;
-    transition:.2s;
-}
-
-button:hover{
-    opacity:.9;
-}
-
-.closeBtn{
-    background:#ff4d4d;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(10,1fr);
-    gap:12px;
-}
-
-.category{
-    background:#1b1f2a;
-    border-radius:14px;
-    overflow:hidden;
-    cursor:pointer;
-    border:2px solid transparent;
-    transition:.2s;
-    width:100%;
-    min-width:0;
-}
-
-.category:hover{
-    border-color:#4b7cff;
-}
-
-.category.hidden{
-    opacity:.08;
-}
-
-.category img{
-    width:100%;
-    aspect-ratio:1/1;
-    object-fit:cover;
-    background:#222;
-}
-
-.categoryInfo{
-    padding:10px;
-    text-align:center;
-}
-
-.categoryName{
-    font-size:18px;
-    font-weight:bold;
-    margin-bottom:8px;
-    line-height:1.2;
-}
-
-.categoryTotal{
-    font-size:13px;
-    opacity:.8;
-}
-
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.85);
-    display:none;
-    justify-content:center;
-    align-items:center;
-    z-index:1000;
-}
-
-.modal.active{
-    display:flex;
-}
-
-.modalBox{
-    width:1400px;
-    max-width:95%;
-    background:#161b25;
-    border-radius:20px;
-    padding:20px;
-}
-
-.specLayout{
-    display:grid;
-    grid-template-columns:250px 1fr;
-    gap:20px;
-}
-
-.totalCard{
-    background:#232938;
-    border-radius:16px;
-    overflow:hidden;
-    cursor:pointer;
-}
-
-.totalCard img{
-    width:100%;
-    height:200px;
-    object-fit:cover;
-    background:#333;
-}
-
-.totalInfo{
-    padding:12px;
-    text-align:center;
-}
-
-.totalInfo div:first-child{
-    font-size:22px;
-    font-weight:bold;
-}
-
-.totalSpec{
-    margin-top:10px;
-    font-size:14px;
-    opacity:.8;
-}
-
-.weaponGrid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
-}
-
-.weapon{
-    background:#232938;
-    border-radius:16px;
-    overflow:hidden;
-    cursor:pointer;
-}
-
-.weapon img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
-    background:#333;
-}
-
-.weaponInfo{
-    padding:10px;
-    text-align:center;
-}
-
-.weaponInfo div:first-child{
-    font-size:20px;
-    font-weight:bold;
-    margin-bottom:8px;
-}
-
-.weaponSpec{
-    font-size:14px;
-    opacity:.8;
-}
-
-.editModal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.9);
-    display:none;
-    justify-content:center;
-    align-items:center;
-    z-index:2000;
-}
-
-.editModal.active{
-    display:flex;
-}
-
-.editBox{
-    width:500px;
-    background:#161b25;
-    border-radius:20px;
-    padding:20px;
-}
-
-.editPreview{
-    width:100%;
-    height:240px;
-    object-fit:cover;
-    background:#333;
-    border-radius:16px;
-    margin-bottom:20px;
-}
-
-.editBox input{
-    width:100%;
-    margin-bottom:15px;
-    padding:14px;
-    border:none;
-    border-radius:12px;
-    background:#232938;
-    color:white;
-    font-size:15px;
-}
-
-.userBox{
-    background:#1b1f2a;
-    padding:12px;
-    border-radius:10px;
-    margin-bottom:20px;
-}
-
-/* ================= MOBILE VERTICAL ================= */
-
-@media (max-width: 900px) and (orientation: portrait){
-
-    body{
-        padding:12px;
-    }
-
-    /* ================= GRID PRINCIPAL ================= */
-
-    .grid{
-
-        display:grid;
-
-        grid-template-rows:repeat(10,minmax(0,1fr));
-
-        grid-auto-flow:column;
-
-        grid-auto-columns:calc((100vw - 60px) / 4);
-
-        justify-content:center;
-
-        width:100%;
-
-        gap:10px;
-    }
-
-    .category{
-
-        width:100%;
-
-        min-width:0;
-    }
-
-    .categoryName{
-        font-size:15px;
-    }
-
-    .categoryTotal{
-        font-size:12px;
-    }
-
-    /* ================= MODAL ================= */
-
-    .modal{
-        align-items:flex-start;
-        overflow:auto;
-        padding:20px 0;
-    }
-
-    .modalBox{
-
-        width:95%;
-
-        padding:16px;
-    }
-
-    /* ================= SPECS ================= */
-
-    .specLayout{
-
-        grid-template-columns:1fr;
-
-        gap:20px;
-    }
-
-    /* ================= CARD TOTAL ================= */
-
-    .totalCard{
-
-        width:100%;
-    }
-
-    .totalCard img{
-
-        height:220px;
-    }
-
-    /* ================= GRID ARMAS ================= */
-
-    .weaponGrid{
-
-        grid-template-columns:repeat(2,1fr);
-
-        gap:12px;
-    }
-
-    .weapon img{
-
-        height:140px;
-    }
-
-    .weaponInfo div:first-child{
-
-        font-size:16px;
-    }
-
-    /* ================= EDIT MODAL ================= */
-
-    .editModal{
-
-        overflow:auto;
-        padding:20px 0;
-    }
-
-    .editBox{
-
-        width:95%;
-    }
-
-    .editPreview{
-
-        height:220px;
-    }
-
-    /* ================= BOTONES ================= */
-
-    .topbar{
-
-        flex-direction:column;
-    }
-
-    button{
-
-        width:100%;
-    }
-}
+    <h1>EBastos14 Crafter Specs Editor</h1>
     
-    </style>
-</head>
-<body>
-
-<h1>Albion Specs Editor</h1>
-
-<div class="userBox" id="userBox">
-    No conectado
-</div>
-
-<div class="topbar">
-
-    <button id="loginBtn" onclick="loginGoogle()">
-        Login
-    </button>
-
-    <button id="logoutBtn" onclick="logoutGoogle()" style="display:none;">
-        Logout
-    </button>
-
-    <button
-        id="saveBtn"
-        onclick="forceSave()"
-        style="display:none;"
-    >
-        Guardar JSON
-    </button>
-
-</div>
-
-<div class="grid" id="grid"></div>
-
-<!-- MODAL SPECS -->
-
-<div class="modal" id="specModal">
-
-    <div class="modalBox">
-
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-
-            <h2 id="modalTitle">
-                Categoria
-            </h2>
-
-            <div style="display:flex;gap:10px;">
-
-                <button onclick="toggleVisibility()">
+    <div class="userBox" id="userBox">
+        No conectado
+    </div>
+    
+    <div class="topbar">
+    
+        <button id="loginBtn" onclick="loginGoogle()">
+            Login
+        </button>
+    
+        <button id="logoutBtn" onclick="logoutGoogle()" style="display:none;">
+            Logout
+        </button>
+    
+        <button
+            id="saveBtn"
+            onclick="forceSave()"
+            style="display:none;"
+        >
+            Guardar JSON
+        </button>
+    
+    </div>
+    
+    <div class="grid" id="grid"></div>
+    
+    <!-- MODAL SPECS -->
+    
+    <div class="modal" id="specModal">
+    
+        <div class="modalBox">
+    
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+    
+                <h2 id="modalTitle">
+                    Categoria
+                </h2>
+    
+                <div style="display:flex;gap:10px;">
+    
+                    <button onclick="toggleVisibility()">
+                        Mostrar/Ocultar
+                    </button>
+    
+                    <button class="closeBtn" onclick="closeSpecs()">
+                        Cerrar
+                    </button>
+    
+                </div>
+    
+            </div>
+    
+            <div class="specLayout">
+    
+                <div class="totalCard" onclick="openCategoryEdit()">
+    
+                    <img id="categoryImage">
+    
+                    <div class="totalInfo">
+    
+                        <div id="categoryName"></div>
+    
+                        <div class="totalSpec" id="categorySpec">
+                            0 / 800
+                        </div>
+    
+                    </div>
+    
+                </div>
+    
+                <div class="weaponGrid" id="weaponGrid"></div>
+    
+            </div>
+    
+        </div>
+    
+    </div>
+    
+    <!-- MODAL EDIT -->
+    
+    <div class="editModal" id="editModal">
+    
+        <div class="editBox">
+    
+            <img id="editPreview" class="editPreview">
+    
+            <input id="editImage" placeholder="URL Imagen">
+    
+            <input id="editName" placeholder="Nombre">
+    
+            <input
+                id="editSpec"
+                type="number"
+                min="0"
+                max="100"
+                placeholder="Spec"
+            >
+    
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+    
+                <button id="hideWeaponBtn" onclick="toggleWeaponVisibility()">
                     Mostrar/Ocultar
                 </button>
-
-                <button class="closeBtn" onclick="closeSpecs()">
-                    Cerrar
+    
+                <button onclick="saveEdit()">
+                    Aplicar
                 </button>
-
+    
+                <button class="closeBtn" onclick="closeEdit()">
+                    Cancelar
+                </button>
+    
             </div>
-
+    
         </div>
-
-        <div class="specLayout">
-
-            <div class="totalCard" onclick="openCategoryEdit()">
-
-                <img id="categoryImage">
-
-                <div class="totalInfo">
-
-                    <div id="categoryName"></div>
-
-                    <div class="totalSpec" id="categorySpec">
-                        0 / 800
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="weaponGrid" id="weaponGrid"></div>
-
-        </div>
-
+    
     </div>
-
-</div>
-
-<!-- MODAL EDIT -->
-
-<div class="editModal" id="editModal">
-
-    <div class="editBox">
-
-        <img id="editPreview" class="editPreview">
-
-        <input id="editImage" placeholder="URL Imagen">
-
-        <input id="editName" placeholder="Nombre">
-
-        <input
-            id="editSpec"
-            type="number"
-            min="0"
-            max="100"
-            placeholder="Spec"
-        >
-
-        <div style="display:flex;gap:10px;flex-wrap:wrap;">
-
-            <button id="hideWeaponBtn" onclick="toggleWeaponVisibility()">
-                Mostrar/Ocultar
-            </button>
-
-            <button onclick="saveEdit()">
-                Aplicar
-            </button>
-
-            <button class="closeBtn" onclick="closeEdit()">
-                Cancelar
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-<script type="module">
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-
-import {
-    getDatabase,
-    ref,
-    set,
-    get
-}
-from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
-
-import {
-    getAuth,
-    GoogleAuthProvider,
-    signInWithPopup,
-    onAuthStateChanged,
-    signOut
-}
-from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-
-/* ================= FIREBASE CONFIG ================= */
-
-const firebaseConfig = { 
-    apiKey: "AIzaSyBtjzpQfDrtTLqcTDXoJ2zbU5m0zJgL3gg", 
-    authDomain: "boteb14-specs.firebaseapp.com", 
-    databaseURL: "https://boteb14-specs-default-rtdb.firebaseio.com", 
-    projectId: "boteb14-specs", 
-    storageBucket: "boteb14-specs.firebasestorage.app", 
-    messagingSenderId: "367869082958", 
-    appId: "1:367869082958:web:13f602b79ddfa54fb9321f", 
-    measurementId: "G-8BLE0PQ2MX" };
-/* ================= INIT ================= */
-
-const app = initializeApp(firebaseConfig);
-
-const db = getDatabase(app);
-
-const dbRef = ref(db,'albionSpecs');
-
-const auth = getAuth(app);
-
-const provider = new GoogleAuthProvider();
-
-/* ================= DATA ================= */
-
-let data = [];
-
-let currentCategory = 0;
-
-let currentWeapon = null;
-
-let editingCategory = false;
-
-let currentUser = null;
-
-/* ================= AUTH ================= */
-
-window.loginGoogle = async function(){
-
-    try{
-
-        await signInWithPopup(auth, provider);
-
-    }catch(err){
-
-        console.error(err);
-
-        alert("Error login");
+    
+    <script type="module">
+    
+    import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    
+    import {
+        getDatabase,
+        ref,
+        set,
+        get
     }
-}
-
-window.logoutGoogle = async function(){
-
-    await signOut(auth);
-}
-
-onAuthStateChanged(auth,(user)=>{
-
-    const box =
-    document.getElementById('userBox');
-
-    const loginBtn =
-    document.getElementById('loginBtn');
-
-    const logoutBtn =
-    document.getElementById('logoutBtn');
-
-    const saveBtn =
-    document.getElementById('saveBtn');
-
-    if(user){
-
-        currentUser = user;
-
-        box.innerHTML = 'Conectado ✓';
-
-        loginBtn.style.display = 'none';
-
-        logoutBtn.style.display = 'block';
-
-        saveBtn.style.display = 'block';
-
-        init();
-
-    }else{
-
-        currentUser = null;
-
-        box.innerHTML = 'No conectado';
-
-        loginBtn.style.display = 'block';
-
-        logoutBtn.style.display = 'none';
-
-        saveBtn.style.display = 'none';
+    from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
+    
+    import {
+        getAuth,
+        GoogleAuthProvider,
+        signInWithPopup,
+        onAuthStateChanged,
+        signOut
     }
-});
-
-/* ================= INIT ================= */
-
-async function init(){
-
-    createDefault();
-
-    renderGrid();
-
-    try{
-
-        const snapshot = await get(dbRef);
-
-        if(snapshot.exists()){
-
-            const json = snapshot.val();
-
-            data = json.grid;
-
-            renderGrid();
+    from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    
+    /* ================= FIREBASE CONFIG ================= */
+    
+    const firebaseConfig = { 
+        apiKey: "AIzaSyBtjzpQfDrtTLqcTDXoJ2zbU5m0zJgL3gg", 
+        authDomain: "boteb14-specs.firebaseapp.com", 
+        databaseURL: "https://boteb14-specs-default-rtdb.firebaseio.com", 
+        projectId: "boteb14-specs", 
+        storageBucket: "boteb14-specs.firebasestorage.app", 
+        messagingSenderId: "367869082958", 
+        appId: "1:367869082958:web:13f602b79ddfa54fb9321f", 
+        measurementId: "G-8BLE0PQ2MX" };
+    /* ================= INIT ================= */
+    
+    const app = initializeApp(firebaseConfig);
+    
+    const db = getDatabase(app);
+    
+    const dbRef = ref(db,'albionSpecs');
+    
+    const auth = getAuth(app);
+    
+    const provider = new GoogleAuthProvider();
+    
+    /* ================= DATA ================= */
+    
+    let data = [];
+    
+    let currentCategory = 0;
+    
+    let currentWeapon = null;
+    
+    let editingCategory = false;
+    
+    let currentUser = null;
+    
+    /* ================= AUTH ================= */
+    
+    window.loginGoogle = async function(){
+    
+        try{
+    
+            await signInWithPopup(auth, provider);
+    
+        }catch(err){
+    
+            console.error(err);
+    
+            alert("Error login");
         }
-
-    }catch(err){
-
-        console.error(err);
     }
-}
-
-/* ================= DEFAULT ================= */
-
-function createDefault(){
-
-    data = [];
-
-    for(let i = 0; i < 40; i++){
-
-        const weapons = [];
-
-        for(let w = 0; w < 8; w++){
-
-            weapons.push({
-
-                image:"https://placehold.co/300x300/232938/ffffff?text=Spec",
-
-                name:`Spec ${w + 1}`,
-
-                spec:0,
-
-                visible:true
+    
+    window.logoutGoogle = async function(){
+    
+        await signOut(auth);
+    }
+    
+    onAuthStateChanged(auth,(user)=>{
+    
+        const box =
+        document.getElementById('userBox');
+    
+        const loginBtn =
+        document.getElementById('loginBtn');
+    
+        const logoutBtn =
+        document.getElementById('logoutBtn');
+    
+        const saveBtn =
+        document.getElementById('saveBtn');
+    
+        if(user){
+    
+            currentUser = user;
+    
+            box.innerHTML = 'Conectado ✓';
+    
+            loginBtn.style.display = 'none';
+    
+            logoutBtn.style.display = 'block';
+    
+            saveBtn.style.display = 'block';
+    
+            init();
+    
+        }else{
+    
+            currentUser = null;
+    
+            box.innerHTML = 'No conectado';
+    
+            loginBtn.style.display = 'block';
+    
+            logoutBtn.style.display = 'none';
+    
+            saveBtn.style.display = 'none';
+        }
+    });
+    
+    /* ================= INIT ================= */
+    
+    async function init(){
+    
+        createDefault();
+    
+        renderGrid();
+    
+        try{
+    
+            const snapshot = await get(dbRef);
+    
+            if(snapshot.exists()){
+    
+                const json = snapshot.val();
+    
+                data = json.grid;
+    
+                renderGrid();
+            }
+    
+        }catch(err){
+    
+            console.error(err);
+        }
+    }
+    
+    /* ================= DEFAULT ================= */
+    
+    function createDefault(){
+    
+        data = [];
+    
+        for(let i = 0; i < 40; i++){
+    
+            const weapons = [];
+    
+            for(let w = 0; w < 8; w++){
+    
+                weapons.push({
+    
+                    image:"https://placehold.co/300x300/232938/ffffff?text=Spec",
+    
+                    name:`Spec ${w + 1}`,
+    
+                    spec:0,
+    
+                    visible:true
+                });
+            }
+    
+            data.push({
+    
+                visible:true,
+    
+                image:"https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
+    
+                name:`Categoria ${i + 1}`,
+    
+                weapons
             });
         }
-
-        data.push({
-
-            visible:true,
-
-            image:"https://placehold.co/300x300/1b1f2a/ffffff?text=Categoria",
-
-            name:`Categoria ${i + 1}`,
-
-            weapons
+    }
+    
+    /* ================= SAVE ================= */
+    
+    async function saveFirebase(){
+    
+        if(!currentUser){
+    
+            alert("No autenticado");
+    
+            return;
+        }
+    
+        try{
+    
+            await set(dbRef, {
+    
+                grid:data
+    
+            });
+    
+        }catch(err){
+    
+            console.error(err);
+    
+            alert("Error guardando");
+        }
+    }
+    
+    window.forceSave = async function(){
+    
+        const btn =
+        document.getElementById('saveBtn');
+    
+        btn.innerText = "Guardando...";
+    
+        btn.disabled = true;
+    
+        await saveFirebase();
+    
+        btn.innerText = "Guardado ✓";
+    
+        setTimeout(()=>{
+    
+            btn.innerText = "Guardar JSON";
+    
+            btn.disabled = false;
+    
+        },1200);
+    }
+    
+    /* ================= TOTAL ================= */
+    
+    function total(category){
+    
+        return category.weapons.reduce(
+            (a,b)=>a+b.spec,
+            0
+        );
+    }
+    
+    /* ================= GRID ================= */
+    
+    function renderGrid(){
+    
+        const grid =
+        document.getElementById('grid');
+    
+        grid.innerHTML = '';
+    
+        data.forEach((cat,index)=>{
+    
+            const div =
+            document.createElement('div');
+    
+            div.className = 'category';
+    
+            if(!cat.visible){
+    
+                div.classList.add('hidden');
+            }
+    
+            div.innerHTML = `
+    
+                <img src="${cat.image}">
+    
+                <div class="categoryInfo">
+    
+                    <div class="categoryName">
+                        ${cat.name}
+                    </div>
+    
+                    <div class="categoryTotal">
+                        ${total(cat)} / 800
+                    </div>
+    
+                </div>
+            `;
+    
+            div.onclick = ()=>openSpecs(index);
+    
+            grid.appendChild(div);
         });
     }
-}
-
-/* ================= SAVE ================= */
-
-async function saveFirebase(){
-
-    if(!currentUser){
-
-        alert("No autenticado");
-
-        return;
+    
+    /* ================= SPECS ================= */
+    
+    function openSpecs(index){
+    
+        currentCategory = index;
+    
+        const cat = data[index];
+    
+        document.getElementById('specModal')
+        .classList.add('active');
+    
+        document.getElementById('modalTitle')
+        .innerText = cat.name;
+    
+        document.getElementById('categoryImage')
+        .src = cat.image;
+    
+        document.getElementById('categoryName')
+        .innerText = cat.name;
+    
+        document.getElementById('categorySpec')
+        .innerText = total(cat) + ' / 800';
+    
+        renderWeapons();
     }
-
-    try{
-
-        await set(dbRef, {
-
-            grid:data
-
+    
+    function renderWeapons(){
+    
+        const grid =
+        document.getElementById('weaponGrid');
+    
+        grid.innerHTML = '';
+    
+        data[currentCategory]
+        .weapons
+        .forEach((weapon,index)=>{
+    
+            const div =
+            document.createElement('div');
+    
+            div.className = 'weapon';
+    
+            if(!weapon.visible){
+    
+                div.style.opacity = '.08';
+            }
+    
+            div.innerHTML = `
+    
+                <img src="${weapon.image}">
+    
+                <div class="weaponInfo">
+    
+                    <div>
+                        ${weapon.name}
+                    </div>
+    
+                    <div class="weaponSpec">
+                        ${weapon.spec}
+                    </div>
+    
+                </div>
+            `;
+    
+            div.onclick = ()=>openWeapon(index);
+    
+            grid.appendChild(div);
         });
-
-    }catch(err){
-
-        console.error(err);
-
-        alert("Error guardando");
     }
-}
-
-window.forceSave = async function(){
-
-    const btn =
-    document.getElementById('saveBtn');
-
-    btn.innerText = "Guardando...";
-
-    btn.disabled = true;
-
-    await saveFirebase();
-
-    btn.innerText = "Guardado ✓";
-
-    setTimeout(()=>{
-
-        btn.innerText = "Guardar JSON";
-
-        btn.disabled = false;
-
-    },1200);
-}
-
-/* ================= TOTAL ================= */
-
-function total(category){
-
-    return category.weapons.reduce(
-        (a,b)=>a+b.spec,
-        0
-    );
-}
-
-/* ================= GRID ================= */
-
-function renderGrid(){
-
-    const grid =
-    document.getElementById('grid');
-
-    grid.innerHTML = '';
-
-    data.forEach((cat,index)=>{
-
-        const div =
-        document.createElement('div');
-
-        div.className = 'category';
-
-        if(!cat.visible){
-
-            div.classList.add('hidden');
-        }
-
-        div.innerHTML = `
-
-            <img src="${cat.image}">
-
-            <div class="categoryInfo">
-
-                <div class="categoryName">
-                    ${cat.name}
-                </div>
-
-                <div class="categoryTotal">
-                    ${total(cat)} / 800
-                </div>
-
-            </div>
-        `;
-
-        div.onclick = ()=>openSpecs(index);
-
-        grid.appendChild(div);
-    });
-}
-
-/* ================= SPECS ================= */
-
-function openSpecs(index){
-
-    currentCategory = index;
-
-    const cat = data[index];
-
-    document.getElementById('specModal')
-    .classList.add('active');
-
-    document.getElementById('modalTitle')
-    .innerText = cat.name;
-
-    document.getElementById('categoryImage')
-    .src = cat.image;
-
-    document.getElementById('categoryName')
-    .innerText = cat.name;
-
-    document.getElementById('categorySpec')
-    .innerText = total(cat) + ' / 800';
-
-    renderWeapons();
-}
-
-function renderWeapons(){
-
-    const grid =
-    document.getElementById('weaponGrid');
-
-    grid.innerHTML = '';
-
-    data[currentCategory]
-    .weapons
-    .forEach((weapon,index)=>{
-
-        const div =
-        document.createElement('div');
-
-        div.className = 'weapon';
-
-        if(!weapon.visible){
-
-            div.style.opacity = '.08';
-        }
-
-        div.innerHTML = `
-
-            <img src="${weapon.image}">
-
-            <div class="weaponInfo">
-
-                <div>
-                    ${weapon.name}
-                </div>
-
-                <div class="weaponSpec">
-                    ${weapon.spec}
-                </div>
-
-            </div>
-        `;
-
-        div.onclick = ()=>openWeapon(index);
-
-        grid.appendChild(div);
-    });
-}
-
-/* ================= CLOSE ================= */
-
-window.closeSpecs = function(){
-
-    document.getElementById('specModal')
-    .classList.remove('active');
-}
-
-/* ================= TOGGLE CATEGORY ================= */
-
-window.toggleVisibility = function(){
-
-    data[currentCategory].visible =
-    !data[currentCategory].visible;
-
-    renderGrid();
-
-    openSpecs(currentCategory);
-}
-
-/* ================= CATEGORY EDIT ================= */
-
-window.openCategoryEdit = function(){
-
-    editingCategory = true;
-
-    const cat = data[currentCategory];
-
-    document.getElementById('editModal')
-    .classList.add('active');
-
-    document.getElementById('editPreview')
-    .src = cat.image;
-
-    document.getElementById('editImage')
-    .value = cat.image;
-
-    document.getElementById('editName')
-    .value = cat.name;
-
-    document.getElementById('editSpec')
-    .style.display = 'none';
-
-    document.getElementById('hideWeaponBtn')
-    .style.display = 'none';
-}
-
-/* ================= WEAPON EDIT ================= */
-
-function openWeapon(index){
-
-    editingCategory = false;
-
-    currentWeapon = index;
-
-    const weapon =
-    data[currentCategory].weapons[index];
-
-    document.getElementById('editModal')
-    .classList.add('active');
-
-    document.getElementById('editPreview')
-    .src = weapon.image;
-
-    document.getElementById('editImage')
-    .value = weapon.image;
-
-    document.getElementById('editName')
-    .value = weapon.name;
-
-    document.getElementById('editSpec')
-    .value = weapon.spec;
-
-    document.getElementById('editSpec')
-    .style.display = 'block';
-
-    document.getElementById('hideWeaponBtn')
-    .style.display = 'block';
-}
-
-/* ================= CLOSE EDIT ================= */
-
-window.closeEdit = function(){
-
-    document.getElementById('editModal')
-    .classList.remove('active');
-}
-
-/* ================= PREVIEW ================= */
-
-document.getElementById('editImage')
-.oninput = (e)=>{
-
-    document.getElementById('editPreview')
-    .src = e.target.value;
-}
-
-/* ================= TOGGLE WEAPON ================= */
-
-window.toggleWeaponVisibility = function(){
-
-    if(editingCategory) return;
-
-    const weapon =
-    data[currentCategory]
-    .weapons[currentWeapon];
-
-    weapon.visible = !weapon.visible;
-
-    renderWeapons();
-}
-
-/* ================= SAVE EDIT ================= */
-
-window.saveEdit = function(){
-
-    const image =
-    document.getElementById('editImage')
-    .value;
-
-    const name =
-    document.getElementById('editName')
-    .value;
-
-    if(editingCategory){
-
-        data[currentCategory].image = image;
-
-        data[currentCategory].name = name;
-
-    }else{
-
-        const spec =
-        parseInt(
-            document.getElementById('editSpec')
-            .value
-        ) || 0;
-
-        data[currentCategory]
-        .weapons[currentWeapon]
-        .image = image;
-
-        data[currentCategory]
-        .weapons[currentWeapon]
-        .name = name;
-
-        data[currentCategory]
-        .weapons[currentWeapon]
-        .spec = spec;
+    
+    /* ================= CLOSE ================= */
+    
+    window.closeSpecs = function(){
+    
+        document.getElementById('specModal')
+        .classList.remove('active');
     }
-
-    renderGrid();
-
-    openSpecs(currentCategory);
-
-    closeEdit();
-}
-
-</script>
-
-</body>
+    
+    /* ================= TOGGLE CATEGORY ================= */
+    
+    window.toggleVisibility = function(){
+    
+        data[currentCategory].visible =
+        !data[currentCategory].visible;
+    
+        renderGrid();
+    
+        openSpecs(currentCategory);
+    }
+    
+    /* ================= CATEGORY EDIT ================= */
+    
+    window.openCategoryEdit = function(){
+    
+        editingCategory = true;
+    
+        const cat = data[currentCategory];
+    
+        document.getElementById('editModal')
+        .classList.add('active');
+    
+        document.getElementById('editPreview')
+        .src = cat.image;
+    
+        document.getElementById('editImage')
+        .value = cat.image;
+    
+        document.getElementById('editName')
+        .value = cat.name;
+    
+        document.getElementById('editSpec')
+        .style.display = 'none';
+    
+        document.getElementById('hideWeaponBtn')
+        .style.display = 'none';
+    }
+    
+    /* ================= WEAPON EDIT ================= */
+    
+    function openWeapon(index){
+    
+        editingCategory = false;
+    
+        currentWeapon = index;
+    
+        const weapon =
+        data[currentCategory].weapons[index];
+    
+        document.getElementById('editModal')
+        .classList.add('active');
+    
+        document.getElementById('editPreview')
+        .src = weapon.image;
+    
+        document.getElementById('editImage')
+        .value = weapon.image;
+    
+        document.getElementById('editName')
+        .value = weapon.name;
+    
+        document.getElementById('editSpec')
+        .value = weapon.spec;
+    
+        document.getElementById('editSpec')
+        .style.display = 'block';
+    
+        document.getElementById('hideWeaponBtn')
+        .style.display = 'block';
+    }
+    
+    /* ================= CLOSE EDIT ================= */
+    
+    window.closeEdit = function(){
+    
+        document.getElementById('editModal')
+        .classList.remove('active');
+    }
+    
+    /* ================= PREVIEW ================= */
+    
+    document.getElementById('editImage')
+    .oninput = (e)=>{
+    
+        document.getElementById('editPreview')
+        .src = e.target.value;
+    }
+    
+    /* ================= TOGGLE WEAPON ================= */
+    
+    window.toggleWeaponVisibility = function(){
+    
+        if(editingCategory) return;
+    
+        const weapon =
+        data[currentCategory]
+        .weapons[currentWeapon];
+    
+        weapon.visible = !weapon.visible;
+    
+        renderWeapons();
+    }
+    
+    /* ================= SAVE EDIT ================= */
+    
+    window.saveEdit = function(){
+    
+        const image =
+        document.getElementById('editImage')
+        .value;
+    
+        const name =
+        document.getElementById('editName')
+        .value;
+    
+        if(editingCategory){
+    
+            data[currentCategory].image = image;
+    
+            data[currentCategory].name = name;
+    
+        }else{
+    
+            const spec =
+            parseInt(
+                document.getElementById('editSpec')
+                .value
+            ) || 0;
+    
+            data[currentCategory]
+            .weapons[currentWeapon]
+            .image = image;
+    
+            data[currentCategory]
+            .weapons[currentWeapon]
+            .name = name;
+    
+            data[currentCategory]
+            .weapons[currentWeapon]
+            .spec = spec;
+        }
+    
+        renderGrid();
+    
+        openSpecs(currentCategory);
+    
+        closeEdit();
+    }
+    
+    </script>
+    
+    </body>
 </html>
