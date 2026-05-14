@@ -386,9 +386,15 @@ function renderWeapons(cat){
 
         div.className = 'weapon';
 
+        /* ================= HIDDEN ================= */
+
         if(!weapon.visible){
 
-            div.style.opacity = '.08';
+            div.style.opacity = '0';
+
+            div.style.pointerEvents = 'none';
+
+            div.style.userSelect = 'none';
         }
 
         div.innerHTML = `
