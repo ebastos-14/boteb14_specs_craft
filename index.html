@@ -263,10 +263,24 @@ let data = [];
 
 function total(category){
 
-    return category.weapons.reduce(
-        (a,b)=>a+b.spec,
-        0
-    );
+    let totalSpec = 0;
+
+    let maxSpec = 0;
+
+    category.weapons.forEach((weapon)=>{
+
+        if(weapon.visible){
+
+            totalSpec += weapon.spec;
+
+            maxSpec += 100;
+        }
+    });
+
+    return {
+        current: totalSpec,
+        max: maxSpec
+    };
 }
 
 /* ================= FIREBASE LISTENER ================= */
@@ -329,7 +343,7 @@ function renderGrid(){
                 </div>
 
                 <div class="categoryTotal">
-                    ${total(cat)} / 800
+                    ${total(cat).current} / ${total(cat).max}
                 </div>
 
             </div>
@@ -364,8 +378,11 @@ function openSpecs(index){
     document.getElementById('categoryName')
     .innerText = cat.name;
 
+    const specs = total(cat);
+    
     document.getElementById('categorySpec')
-    .innerText = total(cat) + ' / 800';
+    .innerText =
+    specs.current + ' / ' + specs.max;
 
     renderWeapons(cat);
 }
