@@ -312,7 +312,7 @@ const movies = [
     title: "abcedario",
     year: "Coso",
     poster: "https://howlongtobeat.com/games/57052_Albion_Online.jpeg",
-    driveFileId: "https://drive.google.com/file/d/1t4l76tbXr29uO_GzYm7bQcBhfXixWbUZ/view?usp=sharing",
+    driveFileId: "https://drive.google.com/file/d/1t4l76tbXr29uO_GzYm7bQcBhfXixWbUZ/view",
     cast: ["Actor / Actriz", "Actor / Actriz"],
     synopsis: "Añade aquí la sinopsis de la película."
   }
