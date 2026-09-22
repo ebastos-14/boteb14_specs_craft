@@ -30,7 +30,7 @@ const firebaseConfig = {
 
 // null = usa automáticamente el día real entre el 1 y el 31 de octubre.
 // Para pruebas puedes poner, por ejemplo: const DEMO_DAY = 15;
-const DEMO_DAY = null;
+const DEMO_DAY = 31;
 
 // ============================================================
 // DATOS DE LAS 31 PELÍCULAS
