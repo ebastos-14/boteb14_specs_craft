@@ -1,4 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-advapp.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 import {
   getAuth,
   GoogleAuthProvider,
@@ -341,7 +341,7 @@ if (firebaseConfigured) {
   db = getFirestore(app);
 } else {
   console.warn(
-    "Firebase aún no está configurado. Completa firebaseConfig en advapp.js."
+    "Firebase aún no está configurado. Completa firebaseConfig en app.js."
   );
 }
 
@@ -1220,7 +1220,7 @@ authButton.addEventListener(
     if (!firebaseConfigured) {
 
       showToast(
-        "Primero configura Firebase en advapp.js."
+        "Primero configura Firebase en app.js."
       );
 
       return;
