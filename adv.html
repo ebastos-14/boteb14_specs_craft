@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario de Adviento Halloween</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --halloween-orange: #ff6600;
+            --halloween-glow: #ff3300;
+            --dark-bg: #0b0614;
+            --panel-bg: #150921;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            background-image: radial-gradient(circle at center, #2a0845 0%, #0b0614 100%);
+            color: #f0f0f0;
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .title-font {
+            font-family: 'Creepster', cursive;
+        }
+
+        .pumpkin-container {
+            display: grid;
+            /* 12 columnas x 5 filas para lograr la silueta perfecta de 31 días + centro */
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            gap: 12px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            background: radial-gradient(ellipse at center, rgba(42, 8, 69, 0.6) 0%, transparent 70%);
+            border-radius: 50%;
+            position: relative;
+        }
+
+        /* Borde brillante de la calabaza */
+        .pumpkin-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 4px solid var(--halloween-orange);
+            border-radius: 50% 50% 45% 45%;
+            box-shadow: 0 0 40px rgba(255, 102, 0, 0.3), inset 0 0 40px rgba(255, 102, 0, 0.2);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .movie-card {
+            background-color: #1a102f;
+            border: 2px solid #4a2e7d;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            aspect-ratio: 2/3;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .movie-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+        }
+
+        .movie-card:hover {
+            border-color: var(--halloween-orange);
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 0 15px var(--halloween-orange);
+            z-index: 10;
+        }
+
+        .movie-card.dimmed {
+            opacity: 0.3;
+            filter: grayscale(80%);
+            pointer-events: none;
+        }
+
+        /* Centro: Película destacada (ocupa 6 columnas y 3 filas) */
+        .center-feature {
+            grid-column: 4 / 10;
+            grid-row: 2 / 5;
+            background: linear-gradient(135deg, #150921, #0b0614);
+            border: 2px solid var(--halloween-orange);
+            border-radius: 20px;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(255, 102, 0, 0.5);
+            padding: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .center-feature:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 50px rgba(255, 102, 0, 0.8);
+        }
+
+        /* Tramos del perímetro asignados dinámicamente en JS */
+        .card-content {
+            position: relative;
+            z-index: 2;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .modal-overlay {
+            background: rgba(5, 2, 10, 0.95);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr 250px;
+            grid-template-rows: auto 1fr auto;
+            gap: 20px;
+            height: 100%;
+        }
+
+        .rating-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 10px;
+            border-radius: 5px;
+            background: #4a2e7d;
+            outline: none;
+        }
+        .rating-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🎃</text></svg>') center/cover;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        .rating-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0b0614; }
+        ::-webkit-scrollbar-thumb { background: #4a2e7d; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--halloween-orange); }
+    </style>
+</head>
+<body class="flex flex-col items-center">
+
+    <header class="w-full max-w-[1200px] flex flex-col md:flex-row items-center justify-between py-6 px-4 z-10">
+        <div class="flex items-center gap-3 mb-4 md:mb-0">
+            <h1 class="title-font text-4xl md:text-5xl text-orange-500 drop-shadow-[0_0_15px_rgba(255,102,0,0.8)] tracking-wider">
+                HALLOWEEN ADVENT
+            </h1>
+        </div>
+        
+        <div class="flex items-center gap-4">
+            <div id="userProfile" class="hidden items-center gap-3 bg-purple-900/40 px-4 py-2 rounded-full border border-purple-500/30">
+                <img id="userAvatar" src="" alt="Avatar" class="w-8 h-8 rounded-full border border-orange-500">
+                <span id="userName" class="text-sm font-semibold text-orange-200"></span>
+                <button onclick="logout()" class="text-xs text-red-400 hover:text-red-300 ml-2">Salir</button>
+            </div>
+            <button id="loginBtn" onclick="loginWithGoogle()" class="px-6 py-2 bg-orange-600 hover:bg-orange-500 text-black font-bold rounded-full transition-all shadow-[0_0_15px_rgba(255,102,0,0.4)] flex items-center gap-2">
+                <span>🎃</span> Iniciar Sesión
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow w-full flex items-center justify-center p-4">
+        <div id="pumpkinGrid" class="pumpkin-container hidden md:grid">
+            <!-- Los 31 días y el panel central se inyectarán aquí mediante JS -->
+        </div>
+        
+        <!-- Mensaje de advertencia para móviles -->
+        <div class="md:hidden flex flex-col items-center justify-center text-center p-8 bg-purple-900/40 rounded-2xl border border-orange-500/50">
+            <span class="text-6xl mb-4">🦇</span>
+            <h2 class="title-font text-3xl text-orange-500 mb-2">¡Oh, no!</h2>
+            <p class="text-zinc-300">La calabaza es demasiado grande para tu pantalla. Por favor, abre esta web en un ordenador o tablet para vivir la experiencia completa.</p>
+        </div>
+    </main>
+
+    <div id="movieModal" class="fixed inset-0 modal-overlay hidden z-50 flex items-center justify-center p-4 md:p-8 opacity-0 transition-opacity duration-300">
+        <div class="w-full max-w-[1400px] h-[90vh] bg-[#12051c] border-2 border-orange-500 rounded-[40px] shadow-[0_0_60px_rgba(255,102,0,0.4)] p-6 relative flex flex-col">
+            
+            <button onclick="closeModal()" class="absolute top-6 right-8 text-orange-500 hover:text-orange-400 text-4xl font-bold transition-transform hover:scale-110 z-20">&times;</button>
+            
+            <div class="text-center mb-4 shrink-0">
+                <h2 id="modalTitle" class="title-font text-4xl text-orange-400 drop-shadow-[0_0_10px_rgba(255,102,0,0.5)]">DÍA X: TÍTULO</h2>
+            </div>
+
+            <div class="modal-grid flex-grow min-h-0">
+                <!-- Panel Izquierdo: Reparto -->
+                <div class="bg-purple-950/40 border border-purple-800/50 rounded-2xl p-5 overflow-y-auto hidden md:block">
+                    <h3 class="text-orange-500 font-bold text-xl mb-4 border-b border-orange-500/30 pb-2 flex items-center gap-2">
+                        <span>🎭</span> Reparto
+                    </h3>
+                    <p id="modalActors" class="text-zinc-300 leading-relaxed text-sm text-justify"></p>
+                </div>
+
+                <!-- Panel Central: Reproductor de Video -->
+                <div class="bg-black rounded-2xl border border-orange-500/50 overflow-hidden relative shadow-inner h-full flex flex-col">
+                    <div class="absolute top-2 left-2 bg-black/60 px-3 py-1 rounded text-xs text-zinc-400 z-10 pointer-events-none">Fuente: Google Drive</div>
+                    <!-- Se usa iframe para incrustar drive -->
+                    <iframe id="modalIframe" src="" class="w-full h-full border-0" allowfullscreen allow="autoplay"></iframe>
+                </div>
+
+                <!-- Panel Derecho: Sinopsis -->
+                <div class="bg-purple-950/40 border border-purple-800/50 rounded-2xl p-5 overflow-y-auto hidden md:block">
+                    <h3 class="text-orange-500 font-bold text-xl mb-4 border-b border-orange-500/30 pb-2 flex items-center gap-2">
+                        <span>📜</span> Sinopsis
+                    </h3>
+                    <p id="modalSynopsis" class="text-zinc-300 leading-relaxed text-sm text-justify"></p>
+                </div>
+
+                <!-- Panel Inferior: Puntuación -->
+                <div class="col-span-1 md:col-span-3 bg-purple-900/30 border border-orange-500/30 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 mt-2 shrink-0">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl">🎃</span>
+                        <div>
+                            <p class="text-sm text-orange-300 font-semibold uppercase tracking-wider">Tu Puntuación</p>
+                            <p id="ratingDisplay" class="text-2xl font-bold text-white">5.0 <span class="text-sm text-zinc-400 font-normal">/ 10</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-grow max-w-xl flex items-center gap-4">
+                        <span class="text-zinc-500 font-bold">1</span>
+                        <input type="range" id="ratingInput" min="1" max="10" step="0.5" value="5" class="rating-slider">
+                        <span class="text-zinc-500 font-bold">10</span>
+                    </div>
+
+                    <button onclick="saveRating()" id="saveRatingBtn" class="px-6 py-3 bg-orange-600 hover:bg-orange-500 text-black font-bold rounded-xl transition-all shadow-[0_0_15px_rgba(255,102,0,0.3)] min-w-[140px]">
+                        Guardar Nota
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="fixed bottom-5 right-5 bg-zinc-900 border border-orange-500 text-white px-6 py-3 rounded-xl shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-[100]">
+        <span id="toastMsg">Mensaje</span>
+    </div>
+
+    <script type="module">
+        // Importaciones de Firebase (Versión Modular)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, collection, onSnapshot, query } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Configuración de Firebase (Se asume inyectada o reemplázala con tu config real de Firebase)
+        // Como es un demo funcional, usaremos un mock si no hay config real para que no falle la UI
+        let app, auth, db;
+        let currentUser = null;
+        let globalRatings = {}; // Estructura: { day: { count: X, total: Y, average: Z } }
+        let userRatings = {}; // Estructura: { day: score }
+
+        try {
+            if (typeof __firebase_config !== 'undefined') {
+                app = initializeApp(JSON.parse(__firebase_config));
+                auth = getAuth(app);
+                db = getFirestore(app);
+                setupAuthListener();
+                listenToAllRatings();
+            } else {
+                console.warn("Firebase no configurado. Funcionando en modo local/mock.");
+                showToast("Modo Visual: Base de datos no conectada.");
+            }
+        } catch (e) {
+            console.error("Error Firebase:", e);
+        }
+
+        // ==========================================
+        // BASE DE DATOS DE PELÍCULAS (31 DÍAS)
+        // ==========================================
+        const movies = [];
+        for(let i = 1; i <= 31; i++) {
+            movies.push({
+                day: i,
+                title: `Película de Terror ${i}`,
+                actors: "Jamie Lee Curtis, Donald Pleasence, Charles Cyphers, Nancy Kyes. Un elenco espectacular que definió el género slasher en la época dorada del cine de terror.",
+                synopsis: `Sinopsis del día ${i}: Quince años después de asesinar a su hermana en la noche de Halloween de 1963, Michael Myers escapa de un hospital psiquiátrico y regresa a la pequeña ciudad de Haddonfield, Illinois, para volver a matar.`,
+                // Aquí va el ID de Google Drive. Usamos un video placeholder para el ejemplo.
+                driveId: "1-PlaceholderID_Reemplazar_Por_Tu_ID", 
+                // Imagen de muestra genérica de horror para carátulas
+                poster: `https://picsum.photos/seed/horror${i}/300/450`
+            });
+        }
+        
+        // Configuración de estado
+        let currentDay = new Date().getDate(); // Día real o forzado (1-31)
+        if(currentDay > 31) currentDay = 31;
+        let activeModalDay = null;
+
+        // ==========================================
+        // LÓGICA DE AUTENTICACIÓN
+        // ==========================================
+        function setupAuthListener() {
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    currentUser = user;
+                    document.getElementById('loginBtn').classList.add('hidden');
+                    document.getElementById('userProfile').classList.remove('hidden');
+                    document.getElementById('userProfile').classList.add('flex');
+                    document.getElementById('userName').innerText = user.displayName.split(' ')[0];
+                    document.getElementById('userAvatar').src = user.photoURL;
+                    loadUserRatings(user.uid);
+                    showToast(`¡Bienvenido/a, ${user.displayName.split(' ')[0]}! 🎃`);
+                } else {
+                    currentUser = null;
+                    userRatings = {};
+                    document.getElementById('loginBtn').classList.remove('hidden');
+                    document.getElementById('userProfile').classList.add('hidden');
+                    document.getElementById('userProfile').classList.remove('flex');
+                    renderGrid(); // Refrescar para quitar notas locales si las hubiera
+                }
+            });
+        }
+
+        window.loginWithGoogle = async function() {
+            if(!auth) return showToast("Autenticación no disponible en modo local.");
+            try {
+                const provider = new GoogleAuthProvider();
+                await signInWithPopup(auth, provider);
+            } catch (error) {
+                console.error("Error Login:", error);
+                showToast("Error al iniciar sesión.");
+            }
+        }
+
+        window.logout = function() {
+            if(auth) signOut(auth);
+        }
+
+        // ==========================================
+        // LÓGICA DE BASE DE DATOS (PUNTUACIONES)
+        // ==========================================
+        function listenToAllRatings() {
+            if(!db) return;
+            const q = query(collection(db, "halloween_ratings"));
+            onSnapshot(q, (snapshot) => {
+                let tempStats = {};
+                snapshot.forEach((doc) => {
+                    const data = doc.data();
+                    if(!tempStats[data.day]) tempStats[data.day] = { count: 0, total: 0 };
+                    tempStats[data.day].count += 1;
+                    tempStats[data.day].total += data.rating;
+                });
+                
+                // Calcular promedios
+                for(let day in tempStats) {
+                    tempStats[day].average = (tempStats[day].total / tempStats[day].count).toFixed(1);
+                }
+                globalRatings = tempStats;
+                renderGrid(); // Actualizar las cartas con las nuevas notas medias
+            }, (error) => {
+                console.error("⚠️ Permisos de Firestore denegados (Global). Actualiza las Reglas de Seguridad.", error);
+            });
+        }
+
+        function loadUserRatings(uid) {
+            if(!db) return;
+            const q = query(collection(db, "halloween_ratings"));
+            onSnapshot(q, (snapshot) => {
+                userRatings = {};
+                snapshot.forEach((doc) => {
+                    const data = doc.data();
+                    if(data.userId === uid) {
+                        userRatings[data.day] = data.rating;
+                    }
+                });
+            }, (error) => {
+                console.error("⚠️ Permisos de Firestore denegados (Usuario). Actualiza las Reglas de Seguridad.", error);
+            });
+        }
+
+        window.saveRating = async function() {
+            if(!currentUser) {
+                showToast("⚠️ Debes iniciar sesión para puntuar.");
+                return;
+            }
+            if(!activeModalDay || !db) return;
+
+            const score = parseFloat(document.getElementById('ratingInput').value);
+            const btn = document.getElementById('saveRatingBtn');
+            btn.innerText = "Guardando...";
+            btn.disabled = true;
+
+            try {
+                // ID único combinando película y usuario
+                const docId = `day${activeModalDay}_user${currentUser.uid}`;
+                await setDoc(doc(db, "halloween_ratings", docId), {
+                    day: activeModalDay,
+                    userId: currentUser.uid,
+                    rating: score,
+                    timestamp: Date.now()
+                });
+                showToast(`Puntuación de ${score} 🎃 guardada.`);
+            } catch (error) {
+                console.error("Error guardando:", error);
+                showToast("Error al guardar la puntuación.");
+            } finally {
+                btn.innerText = "Guardar Nota";
+                btn.disabled = false;
+            }
+        }
+
+        // ==========================================
+        // CONSTRUCCIÓN DEL GRID (LA CALABAZA)
+        // ==========================================
+        function renderGrid() {
+            const grid = document.getElementById('pumpkinGrid');
+            grid.innerHTML = ''; // Limpiar
+
+            // Mapeo preciso de los 31 días en la cuadrícula 12x5
+            // Top (6): F1 C4-9. Izq (9): F2-4 C1-3. Der (9): F2-4 C10-12. Abajo (7): F5 C3-9.
+            const layoutCoordinates = [
+                // Fila 1 (Top) - 6 items
+                {r: 1, c: 4}, {r: 1, c: 5}, {r: 1, c: 6}, {r: 1, c: 7}, {r: 1, c: 8}, {r: 1, c: 9},
+                // Fila 2 (Left 3, Right 3)
+                {r: 2, c: 1}, {r: 2, c: 2}, {r: 2, c: 3}, {r: 2, c: 10}, {r: 2, c: 11}, {r: 2, c: 12},
+                // Fila 3 (Left 3, Right 3)
+                {r: 3, c: 1}, {r: 3, c: 2}, {r: 3, c: 3}, {r: 3, c: 10}, {r: 3, c: 11}, {r: 3, c: 12},
+                // Fila 4 (Left 3, Right 3)
+                {r: 4, c: 1}, {r: 4, c: 2}, {r: 4, c: 3}, {r: 4, c: 10}, {r: 4, c: 11}, {r: 4, c: 12},
+                // Fila 5 (Bottom 7)
+                {r: 5, c: 3}, {r: 5, c: 4}, {r: 5, c: 5}, {r: 5, c: 6}, {r: 5, c: 7}, {r: 5, c: 8}, {r: 5, c: 9}
+            ];
+
+            // Renderizar las 31 tarjetas del perímetro
+            movies.forEach((movie, index) => {
+                const pos = layoutCoordinates[index];
+                if(!pos) return;
+
+                const isCurrentDay = movie.day === currentDay;
+                const ratingData = globalRatings[movie.day];
+                const avgText = ratingData ? `⭐ ${ratingData.average}` : '';
+                
+                const card = document.createElement('div');
+                card.className = `movie-card ${isCurrentDay ? 'dimmed' : ''}`;
+                card.style.gridRow = pos.r;
+                card.style.gridColumn = pos.c;
+                card.style.backgroundImage = `url('${movie.poster}')`;
+                
+                // Si no es el día actual, permite abrir modal haciendo clic
+                if(!isCurrentDay) {
+                    card.onclick = () => openModal(movie.day);
+                }
+
+                card.innerHTML = `
+                    <div class="card-content flex justify-between items-end w-full">
+                        <span class="text-white font-bold text-lg bg-black/60 px-2 py-1 rounded">Día ${movie.day}</span>
+                        ${avgText ? `<span class="text-orange-300 font-bold text-xs bg-black/80 px-2 py-1 rounded border border-orange-500/50">${avgText}</span>` : ''}
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            const featuredMovie = movies[currentDay - 1];
+            const centerBlock = document.createElement('div');
+            centerBlock.className = 'center-feature relative overflow-hidden group';
+            
+            // Imagen de fondo oscurecida para el centro
+            const bgImg = document.createElement('div');
+            bgImg.className = 'absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-60 transition-opacity duration-300';
+            bgImg.style.backgroundImage = `url('${featuredMovie.poster}')`;
+            centerBlock.appendChild(bgImg);
+
+            // Contenido central
+            const centerContent = document.createElement('div');
+            centerContent.className = 'relative z-10 text-center flex flex-col items-center';
+            centerContent.innerHTML = `
+                <span class="bg-orange-600 text-black font-bold px-3 py-1 rounded-full mb-3 text-sm">PELÍCULA DE HOY</span>
+                <img src="${featuredMovie.poster}" class="w-48 rounded-xl shadow-[0_0_20px_rgba(0,0,0,0.8)] border border-orange-500/30 mb-4 group-hover:scale-105 transition-transform">
+                <h3 class="title-font text-3xl text-orange-400 drop-shadow-md">DÍA ${featuredMovie.day}: ${featuredMovie.title.toUpperCase()}</h3>
+                <p class="text-sm text-zinc-300 mt-2 font-semibold">Haz clic para reproducir 🎃</p>
+            `;
+            
+            centerBlock.appendChild(centerContent);
+            centerBlock.onclick = () => openModal(featuredMovie.day);
+            grid.appendChild(centerBlock);
+        }
+
+        // ==========================================
+        // CONTROL DEL MODAL (POP-OUT)
+        // ==========================================
+        window.openModal = function(dayNum) {
+            const movie = movies[dayNum - 1];
+            activeModalDay = dayNum;
+
+            // Rellenar datos visuales
+            document.getElementById('modalTitle').innerText = `DÍA ${movie.day}: ${movie.title.toUpperCase()}`;
+            document.getElementById('modalActors').innerText = movie.actors;
+            document.getElementById('modalSynopsis').innerText = movie.synopsis;
+            
+            // Cargar iFrame de Drive. 
+            // Nota: El formato correcto para Drive es https://drive.google.com/file/d/ID/preview
+            // Aquí usamos un embed genérico de YouTube como fallback visual seguro si el ID de drive falla en pruebas
+            const iframeSrc = movie.driveId.includes('Placeholder') 
+                ? 'https://www.youtube.com/embed/vOZM_aI6Eck?autoplay=0&showinfo=0&controls=1' // Trailer genérico Halloween
+                : `https://drive.google.com/file/d/${movie.driveId}/preview`;
+            
+            document.getElementById('modalIframe').src = iframeSrc;
+
+            // Rellenar estado de puntuación si el usuario ya votó
+            const slider = document.getElementById('ratingInput');
+            const display = document.getElementById('ratingDisplay');
+            if(userRatings[dayNum]) {
+                slider.value = userRatings[dayNum];
+                display.innerHTML = `${userRatings[dayNum].toFixed(1)} <span class="text-sm text-zinc-400 font-normal">/ 10</span>`;
+            } else {
+                slider.value = 5;
+                display.innerHTML = `5.0 <span class="text-sm text-zinc-400 font-normal">/ 10</span>`;
+            }
+
+            // Mostrar modal
+            const modal = document.getElementById('movieModal');
+            modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.remove('opacity-0'); }, 10);
+            document.body.style.overflow = 'hidden'; // Prevenir scroll fondo
+        }
+
+        window.closeModal = function() {
+            const modal = document.getElementById('movieModal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => { 
+                modal.classList.add('hidden'); 
+                // Limpiar iframe para detener el video al cerrar
+                document.getElementById('modalIframe').src = '';
+                activeModalDay = null;
+            }, 300);
+            document.body.style.overflow = 'auto';
+        }
+
+        // Actualización dinámica del texto del Slider
+        document.getElementById('ratingInput').addEventListener('input', function(e) {
+            const val = parseFloat(e.target.value).toFixed(1);
+            document.getElementById('ratingDisplay').innerHTML = `${val} <span class="text-sm text-zinc-400 font-normal">/ 10</span>`;
+        });
+
+        // Utilidad Toast (Notificaciones)
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Inicializar UI local si la BD tarda
+        renderGrid();
+
+    </script>
+</body>
+</html>
