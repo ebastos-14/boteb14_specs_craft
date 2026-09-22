@@ -309,10 +309,10 @@ const movies = [
   },
   {
     day: 31,
-    title: "Película del día 31",
-    year: "",
-    poster: "./assets/posters/day-31.svg",
-    driveFileId: "",
+    title: "abcedario",
+    year: "Coso",
+    poster: "https://www.google.com/search?client=tablet-android-lenovo-rvo3&hs=K4fq&sca_esv=a023011d4c1187da&sxsrf=APpeQntfGKmkq8MEFaPrmQWJLlDx4Vieuw:1790051497092&udm=2&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832VTJOOCxW_fyN-Q_ezyf8gKCPb62Sv4Y60wQDsMxJw_G62NYKd5DPVScemtdVuMtInsg0dfXLgkJTDWPxPUyVNBqLG6hGrjdVAzMbYUbtqTFunME1fTSEZh5vfAJKeMW_1nZlUWoQ_V3UovsYUlETCcrn3xSd4ELVAia8miD-1u3XQ9F6Q&q=albion+online+wallpaper+vertical&sa=X&ved=2ahUKEwjZjPS8rYGXAxWlQzABHQYuEWUQtKgLegQIFhAB&biw=1280&bih=644&dpr=2#sv=CAMSURoyKhBlLUVNYmNWNnJYYUUwUENNMg5FTWJjVjZyWGFFMFBDTToOWk1tTVdTTTd3Z0VJcU0gBCoXCgFzEhBlLUVNYmNWNnJYYUUwUENNGAEwARgHIOTMzdEKSggQARgBIAEoAQ",
+    driveFileId: "https://drive.google.com/file/d/1t4l76tbXr29uO_GzYm7bQcBhfXixWbUZ/view?usp=drive_link",
     cast: ["Actor / Actriz", "Actor / Actriz"],
     synopsis: "Añade aquí la sinopsis de la película."
   }
